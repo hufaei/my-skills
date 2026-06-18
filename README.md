@@ -6,6 +6,10 @@ Installable personal Codex skills. This repository is private and stores reusabl
 
 - `prune-merged-worktrees`: audit and clean local Git branches and linked worktrees while preserving branches not merged into a base branch.
 
+## Notes
+
+- `notes/gpt-5.5-prompt-framework`: GPT-5.5-style system prompt framework notes for reviewing task routing, source-of-truth mapping, safety boundaries, tool contracts, and final-response shaping.
+
 ## Install From GitHub
 
 In Codex, install any skill path from this repository:
