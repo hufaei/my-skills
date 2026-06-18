@@ -9,6 +9,8 @@ Installable personal Codex skills. This repository is private and stores reusabl
 ## Notes
 
 - `notes/gpt-5.5-prompt-framework`: GPT-5.5-style system prompt framework notes for reviewing task routing, source-of-truth mapping, safety boundaries, tool contracts, and final-response shaping.
+- `notes/claude-fable-5-claude-code-prompt-framework`: Claude Fable 5 / Claude Code-style prompt framework notes for reviewing workspace evidence, coding-agent autonomy, tool routing, verification, Git boundaries, and differences from GPT-5.5.
+- `notes/grok-prompt-evolution`: Grok prompt evolution notes for reviewing X/web-first routing, tool schemas, render components, multi-agent experiments, remote sandbox behavior, and differences from GPT-5.5 and Claude Code.
 
 ## Install From GitHub
 
