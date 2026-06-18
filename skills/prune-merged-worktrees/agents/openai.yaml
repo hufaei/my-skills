@@ -1,0 +1,4 @@
+interface:
+  display_name: "Prune Merged Worktrees"
+  short_description: "Safely clean merged Git worktrees"
+  default_prompt: "Use $prune-merged-worktrees to audit and clean local Git branches while preserving work not merged to the base branch."
