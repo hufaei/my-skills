@@ -13,6 +13,18 @@ Installable personal Codex skills. This repository is private and stores reusabl
 - `notes/grok-prompt-evolution`: Grok prompt evolution notes for reviewing X/web-first routing, tool schemas, render components, multi-agent experiments, remote sandbox behavior, and differences from GPT-5.5 and Claude Code.
 - `notes/gemini-prompt-family`: Gemini prompt family notes for reviewing Gemini Pro orchestration gates, Gemini Flash Web UI rendering, Nano Banana image tool contracts, and differences from GPT-5.5, Claude/Fable, and Grok.
 
+## GitHub Pages Notes Site
+
+The prompt engineering notes can be published as a static GitHub Pages reader. The workflow in `.github/workflows/pages.yml` builds `docs/index.html` and copies every `notes/*/README.md` into the Pages artifact.
+
+Expected public URL after Pages is enabled for this repository:
+
+```text
+https://hufaei.github.io/my-skills/
+```
+
+In repository settings, set Pages source to **GitHub Actions**. For private repositories, GitHub Pages availability and private site visibility depend on the GitHub plan and organization/enterprise settings.
+
 ## Install From GitHub
 
 In Codex, install any skill path from this repository:
