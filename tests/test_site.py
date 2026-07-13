@@ -37,6 +37,13 @@ def png_dimensions(path: Path) -> tuple[int, int]:
 
 
 class SiteContractTests(unittest.TestCase):
+    def test_readme_uses_the_canonical_repository_and_pages_route(self):
+        readme = (ROOT / "README.md").read_text(encoding="utf-8")
+        self.assertIn("https://hufaei.github.io/ai-prompt-atlas/", readme)
+        self.assertIn("https://github.com/hufaei/ai-prompt-atlas/", readme)
+        self.assertNotIn("https://hufaei.github.io/my-skills/", readme)
+        self.assertNotIn("https://github.com/hufaei/my-skills/", readme)
+
     def test_site_brand_is_consistent_across_reader_surfaces(self):
         html = INDEX.read_text(encoding="utf-8")
         self.assertEqual(html.count("AI Prompt Atlas"), 6)

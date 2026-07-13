@@ -24,7 +24,7 @@ The prompt engineering notes can be published as a static GitHub Pages reader. T
 Public notes URL:
 
 ```text
-https://hufaei.github.io/my-skills/
+https://hufaei.github.io/ai-prompt-atlas/
 ```
 
 In repository settings, set Pages source to **GitHub Actions**. For private repositories, GitHub Pages availability and private site visibility depend on the GitHub plan and organization/enterprise settings.
@@ -34,7 +34,7 @@ In repository settings, set Pages source to **GitHub Actions**. For private repo
 In Codex, install any skill path from this repository:
 
 ```text
-https://github.com/hufaei/my-skills/tree/main/skills/prune-merged-worktrees
+https://github.com/hufaei/ai-prompt-atlas/tree/main/skills/prune-merged-worktrees
 ```
 
 After installation, restart Codex so the new skills are discovered.
