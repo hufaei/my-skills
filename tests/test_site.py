@@ -37,6 +37,12 @@ def png_dimensions(path: Path) -> tuple[int, int]:
 
 
 class SiteContractTests(unittest.TestCase):
+    def test_site_brand_is_consistent_across_reader_surfaces(self):
+        html = INDEX.read_text(encoding="utf-8")
+        self.assertEqual(html.count("AI Prompt Atlas"), 6)
+        self.assertIn("模型提示词、Agent Runtime 与 Skills 学习图谱", html)
+        self.assertNotIn("Prompt Engineering Notes", html)
+
     def test_catalog_contains_exactly_the_six_learning_notes(self):
         self.assertEqual(catalog_slugs(), EXPECTED_SLUGS)
 

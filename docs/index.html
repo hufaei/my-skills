@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Prompt Engineering Notes</title>
+  <title>AI Prompt Atlas</title>
   <style>
     :root {
       color-scheme: light;
@@ -422,7 +422,7 @@
 <body>
   <header class="site-header">
     <nav class="nav">
-      <a class="brand" id="homeLink" href="./">Prompt Engineering Notes</a>
+      <a class="brand" id="homeLink" href="./">AI Prompt Atlas</a>
       <div class="nav-actions">
         <span id="currentLabel">全部笔记</span>
       </div>
@@ -574,14 +574,14 @@
     }
 
     function renderHome() {
-      document.title = "Prompt Engineering Notes";
+      document.title = "AI Prompt Atlas";
       currentLabel.textContent = "全部笔记";
       homeLink.href = "./";
       app.innerHTML = `
         <section class="home-hero">
           <div class="home-kicker">Learning Snapshot · 2026-07-12</div>
-          <h1>Prompt Engineering Notes</h1>
-          <p>从模型提示词到完整 agent runtime：用导图先建立结构，再通过可复用 FrameworkNote 和复习问题完成学习闭环。</p>
+          <h1>AI Prompt Atlas</h1>
+          <p>模型提示词、Agent Runtime 与 Skills 学习图谱</p>
         </section>
         <section class="note-grid" aria-label="学习笔记列表">
           ${notes.map(note => `
@@ -602,7 +602,7 @@
     }
 
     async function renderNote(note) {
-      document.title = `${note.title} | Prompt Engineering Notes`;
+      document.title = `${note.title} | AI Prompt Atlas`;
       currentLabel.textContent = note.title;
       homeLink.href = routeBase();
       app.innerHTML = `
@@ -640,7 +640,7 @@
     }
 
     function renderNotFound(slug) {
-      document.title = "未找到笔记 | Prompt Engineering Notes";
+      document.title = "未找到笔记 | AI Prompt Atlas";
       currentLabel.textContent = "未找到笔记";
       homeLink.href = routeBase();
       app.innerHTML = `
