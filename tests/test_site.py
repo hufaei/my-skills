@@ -46,6 +46,13 @@ class SiteContractTests(unittest.TestCase):
         self.assertEqual(html.count("badge:"), len(EXPECTED_SLUGS))
         self.assertEqual(html.count("snapshot:"), len(EXPECTED_SLUGS))
 
+    def test_detail_grid_children_can_shrink_to_a_mobile_viewport(self):
+        html = INDEX.read_text(encoding="utf-8")
+        self.assertRegex(
+            html,
+            re.compile(r"\.note-page\s*>\s*\*\s*\{[^}]*min-width:\s*0", re.DOTALL),
+        )
+
     def test_every_note_has_a_markdown_payload_and_mindmap(self):
         for slug in EXPECTED_SLUGS:
             with self.subTest(slug=slug):
