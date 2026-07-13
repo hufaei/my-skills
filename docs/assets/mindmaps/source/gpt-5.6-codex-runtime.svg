@@ -1,0 +1,122 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">GPT-5.6 / Codex Runtime 学习图谱</title>
+  <desc id="desc">从模型行为到验证交付的六层 Codex Runtime 学习地图</desc>
+  <defs>
+    <style>
+      text { font-family: "PingFang SC", "Noto Sans CJK SC", "Microsoft YaHei", sans-serif; fill: #202124; }
+      .title { font-size: 48px; font-weight: 800; letter-spacing: -1px; }
+      .subtitle { font-size: 23px; fill: #62605b; }
+      .module-title { font-size: 25px; font-weight: 780; }
+      .module-copy { font-size: 22px; fill: #4f514d; }
+      .number { font-size: 24px; font-weight: 800; fill: #ffffff; text-anchor: middle; dominant-baseline: central; }
+      .flow-label { font-size: 22px; font-weight: 750; text-anchor: middle; }
+      .principle { font-size: 22px; font-weight: 760; }
+      .check { font-size: 22px; fill: #555752; }
+      .hook { font-size: 28px; font-weight: 780; fill: #10224a; text-anchor: middle; }
+    </style>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="5" stdDeviation="8" flood-color="#202124" flood-opacity="0.08"/>
+    </filter>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto" markerUnits="strokeWidth">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#7182a8"/>
+    </marker>
+  </defs>
+
+  <rect width="1600" height="900" fill="#fbfbf8"/>
+  <circle cx="1450" cy="68" r="95" fill="#e8f0fe" opacity="0.62"/>
+  <circle cx="118" cy="820" r="120" fill="#f5efe1" opacity="0.65"/>
+
+  <text x="800" y="72" class="title" text-anchor="middle">GPT-5.6 / Codex Runtime 学习图谱</text>
+  <text x="800" y="112" class="subtitle" text-anchor="middle">先分层，再路由：行为 → 沟通 → 工作区 → Skills → Runtime → 验证交付</text>
+
+  <g filter="url(#shadow)">
+    <rect x="40" y="148" width="240" height="218" rx="18" fill="#ffffff" stroke="#9db7e5" stroke-width="2"/>
+    <rect x="296" y="148" width="240" height="218" rx="18" fill="#ffffff" stroke="#9cc9be" stroke-width="2"/>
+    <rect x="552" y="148" width="240" height="218" rx="18" fill="#ffffff" stroke="#e4bd71" stroke-width="2"/>
+    <rect x="808" y="148" width="240" height="218" rx="18" fill="#ffffff" stroke="#bea9df" stroke-width="2"/>
+    <rect x="1064" y="148" width="240" height="218" rx="18" fill="#ffffff" stroke="#e7a99d" stroke-width="2"/>
+    <rect x="1320" y="148" width="240" height="218" rx="18" fill="#ffffff" stroke="#8db9d1" stroke-width="2"/>
+  </g>
+
+  <g>
+    <circle cx="70" cy="180" r="20" fill="#3f6fc1"/><text x="70" y="180" class="number">1</text>
+    <text x="100" y="188" class="module-title">模型行为层</text>
+    <text x="64" y="233" class="module-copy"><tspan x="64">人格与协作感</tspan><tspan x="64" dy="34">结果先行表达</tspan><tspan x="64" dy="34">可视化信息 Gate</tspan><tspan x="64" dy="34">用户高度适配</tspan></text>
+
+    <circle cx="326" cy="180" r="20" fill="#3f8e78"/><text x="326" y="180" class="number">2</text>
+    <text x="356" y="188" class="module-title">沟通协议</text>
+    <text x="320" y="233" class="module-copy"><tspan x="320">commentary 进度</tspan><tspan x="320" dy="34">final 自包含交付</tspan><tspan x="320" dy="34">假设与证据可见</tspan><tspan x="320" dy="34">日志不过量</tspan></text>
+
+    <circle cx="582" cy="180" r="20" fill="#c88a21"/><text x="582" y="180" class="number">3</text>
+    <text x="612" y="188" class="module-title">共享工作区</text>
+    <text x="576" y="233" class="module-copy"><tspan x="576">先读再编辑</tspan><tspan x="576" dy="34">保护用户脏树</tspan><tspan x="576" dy="34">遵循现有模式</tspan><tspan x="576" dy="34">Git 边界独立</tspan></text>
+
+    <circle cx="838" cy="180" r="20" fill="#7956ae"/><text x="838" y="180" class="number">4</text>
+    <text x="868" y="188" class="module-title">Skills 层</text>
+    <text x="832" y="233" class="module-copy"><tspan x="832">任务触发匹配</tspan><tspan x="832" dy="34">完整读取入口</tspan><tspan x="832" dy="34">渐进加载引用</tspan><tspan x="832" dy="34">复用脚本模板</tspan></text>
+
+    <circle cx="1094" cy="180" r="20" fill="#bd5f50"/><text x="1094" y="180" class="number">5</text>
+    <text x="1124" y="188" class="module-title">Runtime 能力</text>
+    <text x="1088" y="233" class="module-copy"><tspan x="1088">Shell / 文件</tspan><tspan x="1088" dy="34">Web / Browser</tspan><tspan x="1088" dy="34">Computer / Apps</tspan><tspan x="1088" dy="34">Artifacts / Goals</tspan></text>
+
+    <circle cx="1350" cy="180" r="20" fill="#337e9e"/><text x="1350" y="180" class="number">6</text>
+    <text x="1380" y="188" class="module-title">验证与交付</text>
+    <text x="1344" y="233" class="module-copy"><tspan x="1344">授权先于副作用</tspan><tspan x="1344" dy="34">新鲜证据验证</tspan><tspan x="1344" dy="34">持续到完成条件</tspan><tspan x="1344" dy="34">结果优先汇报</tspan></text>
+  </g>
+
+  <rect x="40" y="398" width="1520" height="146" rx="22" fill="#ffffff" stroke="#cfd6e3" stroke-width="2"/>
+  <text x="76" y="430" class="principle" fill="#3b527f">一次请求的主执行链</text>
+  <g>
+    <rect x="63" y="454" width="205" height="62" rx="14" fill="#e8f0fe" stroke="#9db7e5"/>
+    <text x="165" y="486" class="flow-label">用户请求</text>
+    <line x1="271" y1="485" x2="302" y2="485" stroke="#7182a8" stroke-width="4" marker-end="url(#arrow)"/>
+
+    <rect x="310" y="454" width="205" height="62" rx="14" fill="#edf7f3" stroke="#9cc9be"/>
+    <text x="412" y="486" class="flow-label">事实来源</text>
+    <line x1="518" y1="485" x2="549" y2="485" stroke="#7182a8" stroke-width="4" marker-end="url(#arrow)"/>
+
+    <rect x="557" y="454" width="205" height="62" rx="14" fill="#fff7e8" stroke="#e4bd71"/>
+    <text x="659" y="486" class="flow-label">指令 / Skills</text>
+    <line x1="765" y1="485" x2="796" y2="485" stroke="#7182a8" stroke-width="4" marker-end="url(#arrow)"/>
+
+    <rect x="804" y="454" width="205" height="62" rx="14" fill="#f4effb" stroke="#bea9df"/>
+    <text x="906" y="486" class="flow-label">能力路由</text>
+    <line x1="1012" y1="485" x2="1043" y2="485" stroke="#7182a8" stroke-width="4" marker-end="url(#arrow)"/>
+
+    <rect x="1051" y="454" width="205" height="62" rx="14" fill="#fff0ed" stroke="#e7a99d"/>
+    <text x="1153" y="486" class="flow-label">执行验证</text>
+    <line x1="1259" y1="485" x2="1290" y2="485" stroke="#7182a8" stroke-width="4" marker-end="url(#arrow)"/>
+
+    <rect x="1298" y="454" width="205" height="62" rx="14" fill="#edf7fb" stroke="#8db9d1"/>
+    <text x="1400" y="486" class="flow-label">交付结果</text>
+  </g>
+
+  <g>
+    <rect x="40" y="578" width="240" height="154" rx="16" fill="#f7f9fd" stroke="#c6d3eb"/>
+    <text x="62" y="615" class="principle">先分类，再找证据</text>
+    <text x="62" y="655" class="check"><tspan x="62">任务动词定义授权</tspan><tspan x="62" dy="32">source of truth 定行动</tspan></text>
+
+    <rect x="296" y="578" width="240" height="154" rx="16" fill="#f5faf8" stroke="#c4ded6"/>
+    <text x="318" y="615" class="principle">进度与交付分离</text>
+    <text x="318" y="655" class="check"><tspan x="318">长任务保持可见</tspan><tspan x="318" dy="32">final 必须独立可读</tspan></text>
+
+    <rect x="552" y="578" width="240" height="154" rx="16" fill="#fffaf1" stroke="#ecd6aa"/>
+    <text x="574" y="615" class="principle">保护现场</text>
+    <text x="574" y="655" class="check"><tspan x="574">用户变更不覆盖</tspan><tspan x="574" dy="32">修改精确且可审查</tspan></text>
+
+    <rect x="808" y="578" width="240" height="154" rx="16" fill="#f8f5fc" stroke="#d7c8eb"/>
+    <text x="830" y="615" class="principle">Skill 是工作流</text>
+    <text x="830" y="655" class="check"><tspan x="830">触发 + 顺序 + Gate</tspan><tspan x="830" dy="32">不是普通知识片段</tspan></text>
+
+    <rect x="1064" y="578" width="240" height="154" rx="16" fill="#fff6f4" stroke="#efc9c2"/>
+    <text x="1086" y="615" class="principle">能力不等于授权</text>
+    <text x="1086" y="655" class="check"><tspan x="1086">范围内主动推进</tspan><tspan x="1086" dy="32">新副作用单独确认</tspan></text>
+
+    <rect x="1320" y="578" width="240" height="154" rx="16" fill="#f4fafd" stroke="#bfd9e5"/>
+    <text x="1342" y="615" class="principle">Fresh evidence</text>
+    <text x="1342" y="655" class="check"><tspan x="1342">先运行，再读结果</tspan><tspan x="1342" dy="32">验证决定“完成”</tspan></text>
+  </g>
+
+  <rect x="120" y="778" width="1360" height="78" rx="26" fill="#eef3ff" stroke="#aebfe4" stroke-width="2"/>
+  <text x="800" y="825" class="hook">模型定行为，Runtime 给能力，证据与授权决定动作，验证决定完成。</text>
+</svg>
