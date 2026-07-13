@@ -1,13 +1,3 @@
-node_modules/
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-.DS_Store
-
-.codex/
-.claude/
-
-config.local.json
-tokens.json
-.env
-.env.*.local
+__pycache__/
+*.pyc
+_site/

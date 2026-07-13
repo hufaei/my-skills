@@ -2,6 +2,12 @@
 
 这份笔记用于复习 GPT-5.5 风格系统提示词的核心框架。它不是官方模型说明，而是一个可复用的 prompt engineering 压缩模板。
 
+> 已按源快照 `asgeirtj/system_prompts_leaks@5c86715f453f0eca188451a48bf5b165831d8b29`（2026-07-12）复核。原有九步模板完整保留；新增内容用于说明它在当前 Codex runtime 中的位置。
+
+## 一句话核心
+
+先找到正确的 source of truth，再应用边界、选择最小工具、合并证据并输出可验证的答案。
+
 ## 精华版：For Every User Request
 
 ```text
@@ -55,6 +61,19 @@ Include only useful evidence, limitations, and next actions.
 Do not expose hidden reasoning, raw tool arguments, or irrelevant logs.
 ```
 
+## 当前快照里的位置
+
+这份九步框架仍然适合作为通用请求路由器。当前 GPT-5.6 / Codex 材料没有推翻它，而是在它外面加上了更完整的工程 runtime：共享工作区、commentary/final 双通道、skills、自治执行、Git 现场保护和专用 artifact 工作流。
+
+可以把两者理解成：
+
+```text
+GPT-5.5 = 一次请求的通用判断骨架
+GPT-5.6 / Codex = 骨架 + 工作区 + skills + 工具运行时 + 持续交付
+```
+
+因此复习顺序建议是：先熟悉本页九步路由，再阅读 [GPT-5.6 / Codex Runtime](../gpt-5.6-codex-runtime/) 理解这些原则怎样进入完整 agent runtime。
+
 ## 复习问题
 
 1. 这个请求的 source of truth 是什么？
@@ -63,3 +82,12 @@ Do not expose hidden reasoning, raw tool arguments, or irrelevant logs.
 4. 缺失信息是否真的阻塞执行？
 5. 工具结果如何压缩成证据，而不是直接堆给用户？
 6. 如果用户偏好和高优先级规则冲突，谁赢？
+
+## 来源索引
+
+以下链接固定到本笔记复核时使用的源快照 `5c86715f453f0eca188451a48bf5b165831d8b29`：
+
+- [GPT-5.5 Codex 行为提示词](https://github.com/asgeirtj/system_prompts_leaks/blob/5c86715f453f0eca188451a48bf5b165831d8b29/OpenAI/Codex/gpt-5.5.md)
+- [GPT-5.5 Thinking](https://github.com/asgeirtj/system_prompts_leaks/blob/5c86715f453f0eca188451a48bf5b165831d8b29/OpenAI/gpt-5.5-thinking.md)
+- [GPT-5.5 Instant](https://github.com/asgeirtj/system_prompts_leaks/blob/5c86715f453f0eca188451a48bf5b165831d8b29/OpenAI/gpt-5.5-instant.md)
+- [GPT-5.5 API](https://github.com/asgeirtj/system_prompts_leaks/blob/5c86715f453f0eca188451a48bf5b165831d8b29/OpenAI/gpt-5.5-api.md)

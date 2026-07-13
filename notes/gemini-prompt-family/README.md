@@ -2,6 +2,8 @@
 
 这份笔记用于复习本地仓库里的 Gemini 3 系列与 Nano Banana 2 API。它不是官方模型说明，而是基于 `gemini-3.1-pro`、`gemini-3.5-flash`、`nano-banana-2-api` 的 prompt engineering 学习整理。
 
+> 已按源快照 `asgeirtj/system_prompts_leaks@5c86715f453f0eca188451a48bf5b165831d8b29`（2026-07-12）复核。正文的三层分工、可复用模板和复习问题完整保留；来源统一改为可在线审查的固定链接。
+
 ## 一句话核心
 
 Gemini 这一组最值得学的不是“怎么写一个聊天人格”，而是 **Web 助手如何把一次用户请求路由成文本、图片、交互组件或图像生成任务**。
@@ -368,6 +370,8 @@ Gemini is not only answering; it is deciding the presentation surface.
 
 ## 来源索引
 
-- `gemini-3.1-pro`: `C:\Users\17346\Desktop\system_prompts_leaks\Google\gemini-3.1-pro\sources\variants\Google\gemini-3.1-pro.md`
-- `gemini-3.5-flash`: `C:\Users\17346\Desktop\system_prompts_leaks\Google\gemini-3.5-flash\sources\variants\Google\gemini-3.5-flash.md`
-- `nano-banana-2-api`: `C:\Users\17346\Desktop\system_prompts_leaks\Google\nano-banana-2-api\sources\api\Google\nano-banana-2-api.md`
+以下链接固定到本笔记使用的源快照 `5c86715f453f0eca188451a48bf5b165831d8b29`：
+
+- [Gemini 3.1 Pro](https://github.com/asgeirtj/system_prompts_leaks/blob/5c86715f453f0eca188451a48bf5b165831d8b29/Google/gemini-3.1-pro.md)
+- [Gemini 3.5 Flash](https://github.com/asgeirtj/system_prompts_leaks/blob/5c86715f453f0eca188451a48bf5b165831d8b29/Google/gemini-3.5-flash.md)
+- [Nano Banana 2 API](https://github.com/asgeirtj/system_prompts_leaks/blob/5c86715f453f0eca188451a48bf5b165831d8b29/Google/nano-banana-2-api.md)

@@ -2,6 +2,8 @@
 
 这份笔记用于复习本地仓库里的 Grok 系列提示词演进。它不是官方模型说明，而是基于 `grok-3`、`grok-4`、`grok-4.1-beta`、`grok-4.2`、`grok-4.3-beta` 的 prompt engineering 学习整理。
 
+> 已按源快照 `asgeirtj/system_prompts_leaks@5c86715f453f0eca188451a48bf5b165831d8b29`（2026-07-12）复核。本页保留版本演进作为理解工具注册方式的背景，但当前结论以该源快照为准。
+
 ## 一句话核心
 
 Grok 的提示词演进主线不是“建立稳定推理链”或“建立工程执行闭环”，而是不断把产品能力塞进系统提示词：X 搜索、网页搜索、代码执行、图片生成/编辑、渲染组件、多 agent、远程沙箱和 skills。
@@ -87,10 +89,42 @@ Grok teaches product capability registration.
 - 多 agent 只有协作通道，没有验证和裁决协议。
 - 代码/文件任务只有 read/edit/write/bash，没有测试、Git 和完成标准。
 
+## 可复用模板：For Every Product-Tool Prompt
+
+这不是 Grok 原提示词的逐字模板，而是把其中最值得借鉴的“产品能力注册”压缩成可复用结构。
+
+```text
+For every product-tool prompt:
+
+1. Classify the task before selecting a capability.
+2. Map current facts to search, social context to the relevant network source,
+   code or calculation to execution, and visual output to image/render tools.
+3. Keep every tool schema narrow: purpose, required parameters, constraints,
+   return shape, and post-call handling.
+4. Define an execution order when several tools are needed.
+5. Separate sandbox state from the user's local machine and external accounts.
+6. Add explicit verification and completion criteria around file/code actions.
+7. Treat multi-agent output as candidates that need deduplication and adjudication.
+8. Render only the result type that helps the user inspect or reuse the answer.
+```
+
+## 复习问题
+
+1. 当前请求真正需要的是 X、web、code、image、render 还是文件能力？
+2. 工具 schema 是否说明了用途、参数、限制、返回值和调用后处理？
+3. 多个工具之间有没有明确的先后顺序和完成标准？
+4. 当前事实的搜索 gate 是否足够硬，还是模型可能凭印象作答？
+5. remote sandbox 与用户本地机器、账号和文件的边界是否清楚？
+6. 多 agent 结果由谁去重、验证和裁决？
+7. 文件/代码任务有没有补上测试、Git 和交付闭环？
+8. render 组件是在增加可检查性，还是只是展示产品能力？
+
 ## 来源索引
 
-- `grok-3`: `C:\Users\17346\Desktop\system_prompts_leaks\xAI\grok-3\sources\core\xAI\grok-3.md`
-- `grok-4`: `C:\Users\17346\Desktop\system_prompts_leaks\xAI\grok-4\sources\core\xAI\grok-4.md`
-- `grok-4.1-beta`: `C:\Users\17346\Desktop\system_prompts_leaks\xAI\grok-4.1-beta\sources\core\xAI\grok-4.1-beta.md`
-- `grok-4.2`: `C:\Users\17346\Desktop\system_prompts_leaks\xAI\grok-4.2\sources\core\xAI\grok-4.2.md`
-- `grok-4.3-beta`: `C:\Users\17346\Desktop\system_prompts_leaks\xAI\grok-4.3-beta\sources\core\xAI\grok-4.3-beta.md`
+以下链接固定到本笔记使用的源快照 `5c86715f453f0eca188451a48bf5b165831d8b29`：
+
+- [Grok 3](https://github.com/asgeirtj/system_prompts_leaks/blob/5c86715f453f0eca188451a48bf5b165831d8b29/xAI/grok-3.md)
+- [Grok 4](https://github.com/asgeirtj/system_prompts_leaks/blob/5c86715f453f0eca188451a48bf5b165831d8b29/xAI/grok-4.md)
+- [Grok 4.1 Beta](https://github.com/asgeirtj/system_prompts_leaks/blob/5c86715f453f0eca188451a48bf5b165831d8b29/xAI/grok-4.1-beta.md)
+- [Grok 4.2](https://github.com/asgeirtj/system_prompts_leaks/blob/5c86715f453f0eca188451a48bf5b165831d8b29/xAI/grok-4.2.md)
+- [Grok 4.3 Beta](https://github.com/asgeirtj/system_prompts_leaks/blob/5c86715f453f0eca188451a48bf5b165831d8b29/xAI/grok-4.3-beta.md)
