@@ -36,7 +36,66 @@ def png_dimensions(path: Path) -> tuple[int, int]:
     return struct.unpack(">II", header[16:24])
 
 
+def reusable_prompt(slug: str) -> str:
+    text = (ROOT / "notes" / slug / "README.md").read_text(encoding="utf-8")
+    heading = re.search(
+        r"^## .*?(?:FrameworkNote|精华版|可复用模板).*?$", text, re.MULTILINE
+    )
+    if heading is None:
+        raise AssertionError(f"missing reusable prompt heading for {slug}")
+    block = re.search(r"```text\n(.*?)\n```", text[heading.end() :], re.DOTALL)
+    if block is None:
+        raise AssertionError(f"missing reusable prompt block for {slug}")
+    return block.group(1)
+
+
 class SiteContractTests(unittest.TestCase):
+    def assert_source_shaped_template(
+        self, slug: str, markers: tuple[str, ...], minimum_slots: int = 8
+    ):
+        note = (ROOT / "notes" / slug / "README.md").read_text(encoding="utf-8")
+        prompt = reusable_prompt(slug)
+        slots = re.findall(r"\{\{[A-Z0-9_]+\s*=\s*\.\.\.\}\}", prompt)
+        self.assertGreaterEqual(len(prompt), 2200, slug)
+        self.assertGreaterEqual(len(slots), minimum_slots, slug)
+        for marker in markers:
+            self.assertIn(marker, prompt, f"{slug}: missing {marker}")
+        for disclaimer in (
+            "不是源提示词的逐字内容",
+            "不是源提示词逐字内容",
+            "不是原 prompt 的逐字结构",
+            "不是 Grok 原提示词的逐字模板",
+        ):
+            self.assertNotIn(disclaimer, note, f"{slug}: stale disclaimer")
+
+    def test_openai_notes_use_source_shaped_parameterized_prompts(self):
+        self.assert_source_shaped_template(
+            "gpt-5.5-prompt-framework",
+            (
+                "# General",
+                "## Engineering judgment",
+                "## Frontend guidance",
+                "## Editing constraints",
+                "# Working with the user",
+                "## Intermediate updates",
+                "# Runtime extension slots",
+            ),
+            minimum_slots=10,
+        )
+        self.assert_source_shaped_template(
+            "gpt-5.6-codex-runtime",
+            (
+                "# Personality",
+                "# Working with the user",
+                "## Intermediate commentary",
+                "## Final answer",
+                "# Rules for getting work done",
+                "# Using skills",
+                "# Runtime extension slots",
+            ),
+            minimum_slots=10,
+        )
+
     def test_readme_uses_the_canonical_repository_and_pages_route(self):
         readme = (ROOT / "README.md").read_text(encoding="utf-8")
         self.assertIn("https://hufaei.github.io/ai-prompt-atlas/", readme)
