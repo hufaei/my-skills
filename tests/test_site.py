@@ -96,6 +96,37 @@ class SiteContractTests(unittest.TestCase):
             minimum_slots=10,
         )
 
+    def test_anthropic_notes_use_source_shaped_parameterized_prompts(self):
+        self.assert_source_shaped_template(
+            "claude-fable-5-claude-code-prompt-framework",
+            (
+                "# Harness",
+                "# Communicating with the user",
+                "# Context management",
+                "# Tools",
+                "## {{TOOL_NAME = ...}}",
+                "## Git",
+                "# Task tracking",
+                "# Resume and delivery",
+            ),
+            minimum_slots=12,
+        )
+        self.assert_source_shaped_template(
+            "claude-sonnet-5-claude-code-2.1.207",
+            (
+                "# Assistant base layer",
+                "<tone_and_formatting>",
+                "<proactivity>",
+                "## Artifact routing",
+                "## Connector and tool discovery",
+                "# Coding runtime layer",
+                "## Context management and compaction",
+                "## Bundled skill template",
+                "# Delivery",
+            ),
+            minimum_slots=14,
+        )
+
     def test_readme_uses_the_canonical_repository_and_pages_route(self):
         readme = (ROOT / "README.md").read_text(encoding="utf-8")
         self.assertIn("https://hufaei.github.io/ai-prompt-atlas/", readme)
