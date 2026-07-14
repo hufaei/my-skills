@@ -127,6 +127,36 @@ class SiteContractTests(unittest.TestCase):
             minimum_slots=14,
         )
 
+    def test_grok_and_gemini_notes_use_source_shaped_parameterized_prompts(self):
+        self.assert_source_shaped_template(
+            "grok-prompt-evolution",
+            (
+                "## Environment Info",
+                "## Context Info",
+                "## Available Tools",
+                "## {{TOOL_NAME = ...}}",
+                "## Available Render Components",
+                "## {{RENDER_COMPONENT = ...}}",
+                "## Skills",
+            ),
+            minimum_slots=12,
+        )
+        self.assert_source_shaped_template(
+            "gemini-prompt-family",
+            (
+                "# Assistant identity",
+                "# Capability-only information",
+                "# Response guiding principles",
+                "# Follow-up rules",
+                "# Personalization gate",
+                "# Visual support gate",
+                "# Interactive output gate",
+                "# Image execution contract",
+                "# Output component contracts",
+            ),
+            minimum_slots=14,
+        )
+
     def test_readme_uses_the_canonical_repository_and_pages_route(self):
         readme = (ROOT / "README.md").read_text(encoding="utf-8")
         self.assertIn("https://hufaei.github.io/ai-prompt-atlas/", readme)
