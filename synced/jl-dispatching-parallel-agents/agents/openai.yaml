@@ -1,0 +1,6 @@
+interface:
+  display_name: "JL Dispatching Parallel Agents"
+  short_description: "在多个任务相互独立时安全并行派发代理并汇总结果"
+  default_prompt: "使用 $jl-dispatching-parallel-agents 并行处理这些独立任务：<任务列表>"
+policy:
+  allow_implicit_invocation: false

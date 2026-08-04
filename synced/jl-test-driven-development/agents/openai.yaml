@@ -1,0 +1,6 @@
+interface:
+  display_name: "JL Test-Driven Development"
+  short_description: "在用户选择 TDD 时按红、绿、重构循环驱动实现"
+  default_prompt: "使用 $jl-test-driven-development 以 TDD 实现这个需求：<需求>"
+policy:
+  allow_implicit_invocation: false

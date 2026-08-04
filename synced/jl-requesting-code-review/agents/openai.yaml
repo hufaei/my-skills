@@ -1,0 +1,6 @@
+interface:
+  display_name: "JL Requesting Code Review"
+  short_description: "在实现完成后发起基于需求、提交范围与实际差异的代码审查"
+  default_prompt: "使用 $jl-requesting-code-review 审查这次实现：<范围或提交>"
+policy:
+  allow_implicit_invocation: false

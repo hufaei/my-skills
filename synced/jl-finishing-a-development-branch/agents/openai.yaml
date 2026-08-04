@@ -1,0 +1,6 @@
+interface:
+  display_name: "JL Finishing a Development Branch"
+  short_description: "在实现结束后由用户决定本地合并、创建 PR 或保留分支"
+  default_prompt: "使用 $jl-finishing-a-development-branch 处理这个已完成的开发分支。"
+policy:
+  allow_implicit_invocation: false

@@ -1,0 +1,6 @@
+interface:
+  display_name: "JL Subagent-Driven Development"
+  short_description: "将实施计划分发给独立子代理并在任务之间执行双阶段审查"
+  default_prompt: "使用 $jl-subagent-driven-development 执行这份计划：<计划路径>"
+policy:
+  allow_implicit_invocation: false

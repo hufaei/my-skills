@@ -1,9 +1,9 @@
 ---
-name: chatgpt-pro-engineering
-description: Use only when the user explicitly invokes $chatgpt-pro-engineering or selects it in the skill picker for a repository engineering task that combines local Codex implementation with oversight and final review from a logged-in web ChatGPT Pro session.
+name: jl-chatgpt-pro-conductor
+description: Use only when the user explicitly invokes $jl-chatgpt-pro-conductor or selects it in the skill picker for a repository engineering task that combines local Codex implementation with oversight and final review from a logged-in web ChatGPT Pro session.
 ---
 
-# Local Codex Implementation with ChatGPT Pro Oversight
+# JL ChatGPT Pro Conductor
 
 ## Overview
 
@@ -29,7 +29,7 @@ whether and how to implement them using full repository context.
 ## Invocation and input contract
 
 Execute only when the current request explicitly invokes
-`$chatgpt-pro-engineering` or selects this skill in the UI. If explicit
+`$jl-chatgpt-pro-conductor` or selects this skill in the UI. If explicit
 invocation cannot be established, do not start this workflow.
 
 Require a concrete engineering requirement and testable acceptance criteria.

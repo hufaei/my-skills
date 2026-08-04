@@ -1,0 +1,6 @@
+interface:
+  display_name: "JL Engineering Orchestra"
+  short_description: "手动启动完整的工程设计、实施、审查、纠错与证据验收流程"
+  default_prompt: "使用 $jl-engineering-orchestra 按完整工程工作流处理这个需求：<需求与验收标准>"
+policy:
+  allow_implicit_invocation: false
