@@ -1,0 +1,6 @@
+interface:
+  display_name: "JL Clean DDD Hexagonal"
+  short_description: "为复杂业务后端按需应用 DDD、整洁架构与端口适配器"
+  default_prompt: "使用 $jl-clean-ddd-hexagonal 设计或审查这个复杂业务后端：<需求或代码范围>"
+policy:
+  allow_implicit_invocation: false
