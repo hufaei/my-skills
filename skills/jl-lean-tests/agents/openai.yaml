@@ -3,4 +3,4 @@ interface:
   short_description: "围绕真实故障和稳定契约编写少而有效、不过度膨胀的测试"
   default_prompt: "使用 $jl-lean-tests 为这次改动设计少而有效的测试：<改动或需求>"
 policy:
-  allow_implicit_invocation: false
+  allow_implicit_invocation: true

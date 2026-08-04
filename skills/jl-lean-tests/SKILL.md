@@ -1,6 +1,6 @@
 ---
 name: jl-lean-tests
-description: Use only when the user explicitly invokes $jl-lean-tests or when $jl-engineering-orchestra needs to design, add, or review tests without inflating the suite with implementation-detail, prose, coverage-only, or meaningless absence assertions.
+description: Use when the user asks to design, add, simplify, or review tests, or when $jl-engineering-orchestra routes test work here. Keep tests focused on meaningful failures and stable contracts; do not trigger for ordinary implementation that does not request test work.
 ---
 
 # JL Lean Tests

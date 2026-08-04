@@ -30,9 +30,18 @@ back to an unprefixed or separately installed upstream version.
 - `jl-readme-blueprint-generator`
 - `jl-architecture-decision-records`
 
-Before starting, verify every dependency is installed from this `my-skills`
-checkout. If one is missing or points elsewhere, stop and ask to reinstall the
-repository; do not substitute another skill.
+Before starting, resolve the installed Skill root as the parent directory of
+this `jl-engineering-orchestra` directory. Verify that every dependency has a
+readable sibling file at `<installed-skill-root>/<dependency>/SKILL.md`.
+
+Do not inspect the source repository's `skills/` and `synced/` directories to
+decide what is installed: they distinguish owned and upstream-managed source,
+not installation state. Stop only when an installed sibling is actually
+missing or unreadable; never substitute an unprefixed Skill.
+
+Before following a dependency's workflow, read that sibling `SKILL.md`
+completely, plus each reference it explicitly requires. Do not rely on
+implicit Skill invocation to compose this workflow.
 
 ## Workflow
 

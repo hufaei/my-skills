@@ -16,46 +16,105 @@ Skill 完整副本；克隆仓库并运行安装脚本后，即可在 Codex 中�
   用户决定是否采用。
 - **可追溯同步：** 上游地址、源路径、固定提交、内容 SHA-256、许可证和机械
   转换规则记录在 [`sources.yaml`](sources.yaml)。
-- **安全安装：** 安装脚本只创建软链接，不覆盖已有目录或指向其他位置的链接。
+- **安全安装：** 安装脚本生成独立的全局副本；发现未受管理的同名内容或本机
+  修改时会拒绝覆盖。
 
 ## 安装
+
+### 安装方式与目录映射
+
+仓库是唯一编辑源，Codex 的全局 Skill 目录是由安装脚本生成的本机副本：
+
+```text
+my-skills/skills/jl-<name>  ─┐
+                             ├─复制→ ~/.codex/skills/jl-<name>
+my-skills/synced/jl-<name>  ─┘
+```
+
+`skills/` 保存本仓库直接维护的 Skill，`synced/` 保存从上游生成的完整副本；
+两者都会安装。不要把 `skills/` 或 `synced/` 整个目录嵌套复制到全局目录，
+每个 `jl-*` 必须直接位于 `~/.codex/skills/` 下。设置了 `CODEX_HOME` 时，目标
+改为 `$CODEX_HOME/skills/`。
+
+在 Windows PowerShell 中，默认目标是 `$HOME\.codex\skills\jl-<name>`，通常
+对应 `C:\Users\<用户名>\.codex\skills\jl-<name>`；设置 `CODEX_HOME` 后改为
+`$env:CODEX_HOME\skills\jl-<name>`。
+
+安装后，全局目录中的每个 `jl-*` 都是独立副本，不依赖仓库路径。可以移动或
+删除克隆，但全局副本不应手工修改；请在仓库中修改后重新运行安装脚本。
 
 ### 让 Codex 安装
 
 在新的 Codex 任务中说：
 
 ```text
-安装 https://github.com/hufaei/my-skills，并按照仓库 README 创建本机 Skill 链接。
+安装或更新 https://github.com/hufaei/my-skills：按照仓库 README，把 skills/ 和 synced/ 下的全部 jl-* 直接复制到 Codex 全局 Skill 目录，不要创建软链接。
 ```
 
-### 手动安装
+### 在新电脑上手动安装
 
-将仓库克隆到一个不会移动的目录，然后在仓库根目录运行：
+需要 Git 和 Python 3。下面把仓库克隆到便于后续更新的位置。
+
+#### macOS/Linux
 
 ```bash
+mkdir -p ~/.local/share
+git clone https://github.com/hufaei/my-skills.git ~/.local/share/my-skills
+cd ~/.local/share/my-skills
+python3 scripts/install.py --dry-run
 python3 scripts/install.py
 ```
 
-安装脚本把 `skills/` 和 `synced/` 下的每个 `jl-*` 目录软链接到
-`$CODEX_HOME/skills/`；未设置 `CODEX_HOME` 时使用 `~/.codex/skills/`。
-可以先预览操作：
+#### Windows PowerShell
 
-```bash
-python3 scripts/install.py --dry-run
+```powershell
+$repoPath = Join-Path $HOME "my-skills"
+git clone https://github.com/hufaei/my-skills.git $repoPath
+Set-Location $repoPath
+py -3 .\scripts\install.py --dry-run
+py -3 .\scripts\install.py
 ```
 
-安装后新开一个 Codex 任务，让 Skill 清单重新加载。软链接只是一条本机入口，
-完整内容仍保存在这个仓库中；移动或删除仓库会让链接失效。
+如果系统没有 `py` 启动器，但 `python` 指向 Python 3，请把 `py -3` 替换为
+`python`。
+
+安装脚本把 `skills/` 和 `synced/` 下的每个 `jl-*` 目录完整复制到
+`$CODEX_HOME/skills/`；未设置 `CODEX_HOME` 时使用 `~/.codex/skills/`。
+`--dry-run` 只预览，不修改本机。安装器会安装新增 Skill、更新自己管理且没有
+本机改动的旧副本，并把内容相同的旧安装纳入管理；遇到未受管理的同名内容或
+手工修改过的全局副本时会列出冲突并停止。
+
+安装后新开一个 Codex 任务，让 Skill 清单重新加载。
 
 ### 更新本机内容
 
-已有软链接会直接读取仓库中的最新内容。拉取更新后，只需在新增了 Skill 时
-重新运行安装脚本，为新目录补建链接：
+全局副本不会自动跟随仓库变化。拉取仓库更新后，重新运行安装脚本同步新增和
+变更的 Skill：
+
+macOS/Linux：
 
 ```bash
+cd ~/.local/share/my-skills
 git pull --ff-only
 python3 scripts/install.py
 ```
+
+Windows PowerShell：
+
+```powershell
+Set-Location (Join-Path $HOME "my-skills")
+git pull --ff-only
+py -3 .\scripts\install.py
+```
+
+如果实际克隆位置不是 `~/.local/share/my-skills`，请进入自己的仓库目录再执行。
+安装完成后可以删除仓库；以后更新时重新克隆并运行相同命令即可。为了让
+`git pull --ff-only` 更方便，也可以长期保留这份克隆。
+
+安装器使用跨平台 Python 文件 API，不创建软链接，也不依赖 Bash。部分
+`synced/` 上游 Skill 自带 `.sh` 辅助脚本；在 Windows 使用这些特定功能时需要
+Git Bash 或 WSL。没有实际运行相应脚本时，不应声称它们已经过原生 PowerShell
+验证。
 
 ## 调用策略
 
@@ -65,9 +124,15 @@ python3 scripts/install.py
 $jl-engineering-orchestra <需求与验收标准>
 ```
 
-`jl-clean-branches` 和 `jl-sync-skills` 还支持明确的自然语言请求，例如“清理已
-合并分支”或“检查 Skill 上游更新”。同步过来的 Skill 均通过 Codex UI 元数据
-禁止隐式调用。
+以下 4 个低误触 Skill 允许根据明确的自然语言请求自动调用：
+
+- `jl-clean-branches`：清理已合并分支或 Worktree。
+- `jl-sync-skills`：检查或同步 Skill 上游更新。
+- `jl-doc-steward`：创建、更新或审查指定工程文档。
+- `jl-lean-tests`：明确要求设计、编写、精简或审查测试。
+
+完整 Orchestra、ChatGPT Pro 协作流和所有 `synced/` 工作流组件仍要求显式
+`$jl-*` 调用，避免普通任务自动进入重流程。
 
 在完整工作流中：
 
@@ -145,7 +210,7 @@ my-skills/
 ├── skills/                 # 自建、可直接维护的 Skill
 ├── synced/                 # 由同步脚本生成的上游完整副本
 ├── licenses/               # 第三方许可证副本
-├── scripts/install.py      # 创建本机 Skill 软链接
+├── scripts/install.py      # 安装或更新全局 Skill 独立副本
 ├── scripts/sync_skills.py  # 检查和重新生成同步 Skill
 ├── sources.yaml            # 来源、版本、哈希和转换清单
 └── THIRD_PARTY_NOTICES.md  # 第三方归属说明

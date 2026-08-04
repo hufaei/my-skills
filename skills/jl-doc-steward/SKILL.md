@@ -1,6 +1,6 @@
 ---
 name: jl-doc-steward
-description: Use only when the user explicitly invokes $jl-doc-steward or explicitly asks JL Docs Steward to create, update, synchronize, audit, or restructure repository documentation, including README, ADR, API, architecture, design/RFC, CHANGELOG, CONTRIBUTING/DEVELOPMENT, AGENTS.md, or CLAUDE.md.
+description: Use when the user asks to create, update, synchronize, audit, or restructure repository documentation, including README, ADR, API, architecture, design/RFC, CHANGELOG, CONTRIBUTING/DEVELOPMENT, AGENTS.md, or CLAUDE.md. Do not trigger merely because an unrelated code change might affect documentation.
 ---
 
 # JL Docs Steward
@@ -12,7 +12,8 @@ repository, an accepted decision, or user-provided facts. Treat source code,
 machine-readable contracts, configuration, CI, and accepted decisions as
 evidence; never turn a plausible guess into project truth.
 
-Operate only after explicit invocation. An audit-only request is read-only.
+Operate only when the request has explicit documentation intent or a parent
+workflow routes documented changes here. An audit-only request is read-only.
 Creating, synchronizing, or refining documentation authorizes edits to the
 requested documentation scope, not unrelated code or configuration.
 
