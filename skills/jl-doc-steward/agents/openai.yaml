@@ -1,0 +1,6 @@
+interface:
+  display_name: "JL Docs Steward"
+  short_description: "创建、同步、审查和维护项目中的核心工程文档与代理指南"
+  default_prompt: "使用 $jl-doc-steward 创建、同步或审查这个项目的文档：<范围>"
+policy:
+  allow_implicit_invocation: false

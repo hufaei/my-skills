@@ -36,6 +36,7 @@ python3 scripts/install.py
 | `jl-lean-tests` | 只为真实故障和稳定契约编写精简测试 |
 | `jl-clean-branches` | 扫描远程合并状态并安全清理分支和 Worktree |
 | `jl-sync-skills` | 汇总上游变化并按用户选择更新同步 Skill |
+| `jl-doc-steward` | 创建、同步、审查 README、ADR、API、架构、RFC、CHANGELOG、开发指南和 Agent 指令文档 |
 
 ## 上游同步 Skill
 
@@ -80,6 +81,7 @@ $jl-clean-branches 清理这个仓库已合并的分支和 Worktree
 $jl-readme-blueprint-generator 更新 README
 $jl-architecture-decision-records 记录这个架构决定
 $jl-clean-ddd-hexagonal 设计或审查复杂业务后端的架构边界
+$jl-doc-steward 同步这次代码改动影响的项目文档
 $jl-sync-skills 检查上游更新
 ```
 
