@@ -1,0 +1,6 @@
+interface:
+  display_name: "JL Architecture Decision Records"
+  short_description: "记录重要架构选择的背景、备选方案、后果与生命周期"
+  default_prompt: "使用 $jl-architecture-decision-records 记录这个架构决定：<决定与背景>"
+policy:
+  allow_implicit_invocation: false

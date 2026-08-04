@@ -1,0 +1,6 @@
+interface:
+  display_name: "JL Receiving Code Review"
+  short_description: "根据源码和证据判断审查反馈，再实施必要且正确的修正"
+  default_prompt: "使用 $jl-receiving-code-review 判断并处理这些审查意见：<反馈>"
+policy:
+  allow_implicit_invocation: false

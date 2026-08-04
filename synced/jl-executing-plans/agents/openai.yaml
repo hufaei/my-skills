@@ -1,0 +1,6 @@
+interface:
+  display_name: "JL Executing Plans"
+  short_description: "按检查点批量执行现有计划并持续汇报可验证的进展"
+  default_prompt: "使用 $jl-executing-plans 执行这份已经确认的计划：<计划路径>"
+policy:
+  allow_implicit_invocation: false

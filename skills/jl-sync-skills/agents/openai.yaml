@@ -1,0 +1,6 @@
+interface:
+  display_name: "JL Sync Skills"
+  short_description: "检查上游变化、解释影响并按用户选择同步托管的 Skill 完整副本"
+  default_prompt: "使用 $jl-sync-skills 检查所有上游 Skill 更新，先汇总变化再让我选择。"
+policy:
+  allow_implicit_invocation: true

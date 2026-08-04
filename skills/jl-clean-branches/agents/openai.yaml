@@ -1,0 +1,6 @@
+interface:
+  display_name: "JL Clean Branches"
+  short_description: "扫描远程合并状态并安全清理本地分支、远程分支与 Worktree"
+  default_prompt: "使用 $jl-clean-branches 检查并清理这个仓库已经合并的分支和 Worktree。"
+policy:
+  allow_implicit_invocation: true

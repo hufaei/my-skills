@@ -1,0 +1,12 @@
+# Third-party notices
+
+Files under `synced/` are generated from the upstream projects recorded in
+`sources.yaml`. Local generation adds the `jl-` namespace, rewrites declared
+JL dependency references, and adds Codex UI metadata. Upstream copyrights and
+licenses remain with their respective owners.
+
+| Project | Copyright | License copy |
+| --- | --- | --- |
+| [obra/superpowers](https://github.com/obra/superpowers) | Copyright © 2025 Jesse Vincent | [`licenses/superpowers-MIT.txt`](licenses/superpowers-MIT.txt) |
+| [github/awesome-copilot](https://github.com/github/awesome-copilot) | Copyright GitHub, Inc. | [`licenses/awesome-copilot-MIT.txt`](licenses/awesome-copilot-MIT.txt) |
+| [affaan-m/ECC](https://github.com/affaan-m/ECC) | Copyright © 2026 Affaan Mustafa | [`licenses/ecc-MIT.txt`](licenses/ecc-MIT.txt) |

@@ -1,0 +1,6 @@
+interface:
+  display_name: "JL Using Git Worktrees"
+  short_description: "在用户选择隔离环境时安全创建并验证 Git Worktree"
+  default_prompt: "使用 $jl-using-git-worktrees 为这项工作创建隔离 Worktree：<任务>"
+policy:
+  allow_implicit_invocation: false
