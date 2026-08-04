@@ -10,3 +10,4 @@ licenses remain with their respective owners.
 | [obra/superpowers](https://github.com/obra/superpowers) | Copyright © 2025 Jesse Vincent | [`licenses/superpowers-MIT.txt`](licenses/superpowers-MIT.txt) |
 | [github/awesome-copilot](https://github.com/github/awesome-copilot) | Copyright GitHub, Inc. | [`licenses/awesome-copilot-MIT.txt`](licenses/awesome-copilot-MIT.txt) |
 | [affaan-m/ECC](https://github.com/affaan-m/ECC) | Copyright © 2026 Affaan Mustafa | [`licenses/ecc-MIT.txt`](licenses/ecc-MIT.txt) |
+| [ccheney/robust-skills](https://github.com/ccheney/robust-skills) | Copyright © 2026 robust-skills contributors | [`licenses/robust-skills-MIT.txt`](licenses/robust-skills-MIT.txt) |

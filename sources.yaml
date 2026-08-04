@@ -237,6 +237,23 @@
       "replacements": []
     },
     {
+      "name": "jl-clean-ddd-hexagonal",
+      "kind": "synced",
+      "role": "primary",
+      "repo": "https://github.com/ccheney/robust-skills.git",
+      "ref": "HEAD",
+      "source_name": "clean-ddd-hexagonal",
+      "source_path": "skills/clean-ddd-hexagonal",
+      "destination": "synced/jl-clean-ddd-hexagonal",
+      "commit": "4cc951a6005844c3d779b41fa0ad8f900b6417ad",
+      "content_sha256": "42678bfa96576357e3c617bd99df54f59af70c71cf47877bf832df0826543869",
+      "license": "MIT",
+      "display_name": "JL Clean DDD Hexagonal",
+      "short_description": "为复杂业务后端按需应用 DDD、整洁架构与端口适配器",
+      "default_prompt": "使用 $jl-clean-ddd-hexagonal 设计或审查这个复杂业务后端：<需求或代码范围>",
+      "replacements": []
+    },
+    {
       "name": "jl-subagent-driven-development",
       "kind": "synced",
       "role": "dependency",

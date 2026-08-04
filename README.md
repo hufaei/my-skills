@@ -55,6 +55,7 @@ python3 scripts/install.py
 | `jl-verification-before-completion` | Superpowers `verification-before-completion` | 完成验证 |
 | `jl-readme-blueprint-generator` | GitHub Awesome Copilot `readme-blueprint-generator` | README |
 | `jl-architecture-decision-records` | ECC `architecture-decision-records` | ADR |
+| `jl-clean-ddd-hexagonal` | robust-skills `clean-ddd-hexagonal` | DDD、整洁架构与六边形架构 |
 | `jl-subagent-driven-development` | Superpowers 同名 Skill | 工作流依赖 |
 | `jl-finishing-a-development-branch` | Superpowers 同名 Skill | 工作流依赖 |
 | `jl-dispatching-parallel-agents` | Superpowers 同名 Skill | 工作流依赖 |
@@ -78,8 +79,13 @@ $jl-lean-tests 为这次改动设计少而有效的测试
 $jl-clean-branches 清理这个仓库已合并的分支和 Worktree
 $jl-readme-blueprint-generator 更新 README
 $jl-architecture-decision-records 记录这个架构决定
+$jl-clean-ddd-hexagonal 设计或审查复杂业务后端的架构边界
 $jl-sync-skills 检查上游更新
 ```
+
+`jl-clean-ddd-hexagonal` 也只在显式调用时加载。适合复杂业务规则、长期维护、
+多个入口或外部适配器，以及需要修复领域层反向依赖基础设施的后端；简单 CRUD、
+一次性原型或没有真实业务不变量的项目不应使用完整架构。
 
 ## 同步上游
 
@@ -100,5 +106,6 @@ python3 scripts/sync_skills.py apply jl-brainstorming
 - [obra/superpowers](https://github.com/obra/superpowers)
 - [github/awesome-copilot](https://github.com/github/awesome-copilot)
 - [affaan-m/ECC](https://github.com/affaan-m/ECC)
+- [ccheney/robust-skills](https://github.com/ccheney/robust-skills)
 
 许可证和归属说明见 [`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md)。
