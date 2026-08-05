@@ -12,8 +12,8 @@ Skill 完整副本；克隆仓库并运行安装脚本后，即可在 Codex 中�
 
 - **开箱即用：** 上游 Skill 已完整保存在仓库中，安装不依赖额外 Skill 仓库。
 - **统一命名：** 所有 Skill 使用 `jl-` 前缀，避免与其他本机 Skill 重名。
-- **按需调用：** 完整工程工作流不会套在每个小任务上；TDD 和 Worktree 也由
-  用户决定是否采用。
+- **按需调用：** 完整工程工作流不会套在每个小任务上；显式调用后先形成计划
+  并等待执行口令，再自动选择代理、TDD 和隔离方式，避免例行选择打断。
 - **可追溯同步：** 上游地址、源路径、固定提交、内容 SHA-256、许可证和机械
   转换规则记录在 [`sources.yaml`](sources.yaml)。
 - **安全安装：** 安装脚本生成独立的全局副本；发现未受管理的同名内容或本机
@@ -124,6 +124,10 @@ Git Bash 或 WSL。没有实际运行相应脚本时，不应声称它们已经�
 $jl-engineering-orchestra <需求与验收标准>
 ```
 
+Orchestra 调用后只进行只读检查、方案讨论和计划输出。用户查看计划并明确回复
+`执行` 后才会修改仓库、创建分支或 Worktree、安装依赖、分配实施代理或执行
+发布操作；`可以`、`继续` 或对方案表示认可不会越过执行门禁。
+
 以下 4 个低误触 Skill 允许根据明确的自然语言请求自动调用：
 
 - `jl-clean-branches`：清理已合并分支或 Worktree。
@@ -136,11 +140,17 @@ $jl-engineering-orchestra <需求与验收标准>
 
 在完整工作流中：
 
-- 是否采用 TDD 由用户决定；需要时使用 `jl-lean-tests` 控制测试信号，避免
+- 默认使用多代理执行；需求明确、影响局部且风险较低的简单修改由当前任务
+  直接完成。
+- 任务复杂度主要依据耦合、未知量、契约与运行风险、可逆性和验证范围判断；
+  预计或实际 Diff、文件数量和 Review 工作量也参与判断，但权重较低。
+- 全新功能开发默认采用 TDD；调整现有功能、接口或页面，以及缺陷修复、兼容
+  和重构，默认不走 TDD。两种情况都使用 `jl-lean-tests` 控制测试信号，避免
   无意义回归、精确文案和纯覆盖率测试膨胀。
-- 是否创建 Worktree 由用户决定；不创建时就在当前仓库使用普通功能分支。
-- 当前任务负责统筹、分发、Review 和验收，实施任务可以按需交给多个代理或
-  会话。
+- Worktree 按隔离需要自动选择；普通任务使用适当的现有分支或功能分支，只在
+  并发实施需要隔离、用户明确指定或仓库状态无法安全处理时使用或询问。
+- 当前任务负责统筹、分发、Review 和验收；所有文档判断与同步统一交给
+  `jl-doc-steward`，再由它按文档类型调用仓库内固定版本的专用 Skill。
 
 ## 自建 Skill
 
@@ -148,7 +158,7 @@ $jl-engineering-orchestra <需求与验收标准>
 
 | Skill | 用途 |
 | --- | --- |
-| `jl-engineering-orchestra` | 手动启动完整工程设计、实施、审查和验收工作流 |
+| `jl-engineering-orchestra` | 手动启动先计划、再按执行口令实施和验收的工程工作流 |
 | `jl-chatgpt-pro-conductor` | 本地 Codex 实施，网页版 ChatGPT Pro 统筹并最终 Review |
 | `jl-lean-tests` | 只为真实故障和稳定契约编写精简测试 |
 | `jl-clean-branches` | 扫描远程合并状态并安全清理分支和 Worktree |
@@ -162,9 +172,9 @@ $jl-engineering-orchestra <需求与验收标准>
 
 | 本地 Skill | 上游 | 角色 |
 | --- | --- | --- |
-| `jl-brainstorming` | Superpowers `brainstorming` | 设计 |
-| `jl-writing-plans` | Superpowers `writing-plans` | 计划 |
-| `jl-executing-plans` | Superpowers `executing-plans` | 执行 |
+| `jl-brainstorming` | Superpowers `brainstorming` | 独立深度设计流程 |
+| `jl-writing-plans` | Superpowers `writing-plans` | 独立详细计划流程 |
+| `jl-executing-plans` | Superpowers `executing-plans` | 独立按计划执行 |
 | `jl-test-driven-development` | Superpowers `test-driven-development` | 可选 TDD |
 | `jl-using-git-worktrees` | Superpowers `using-git-worktrees` | 可选隔离 |
 | `jl-requesting-code-review` | Superpowers `requesting-code-review` | 发起审查 |
@@ -173,12 +183,16 @@ $jl-engineering-orchestra <需求与验收标准>
 | `jl-readme-blueprint-generator` | GitHub Awesome Copilot `readme-blueprint-generator` | README |
 | `jl-architecture-decision-records` | ECC `architecture-decision-records` | ADR |
 | `jl-clean-ddd-hexagonal` | robust-skills `clean-ddd-hexagonal` | DDD、整洁架构与六边形架构 |
-| `jl-subagent-driven-development` | Superpowers 同名 Skill | 工作流依赖 |
-| `jl-finishing-a-development-branch` | Superpowers 同名 Skill | 工作流依赖 |
-| `jl-dispatching-parallel-agents` | Superpowers 同名 Skill | 工作流依赖 |
+| `jl-subagent-driven-development` | Superpowers 同名 Skill | 结构化多代理实施 |
+| `jl-finishing-a-development-branch` | Superpowers 同名 Skill | 分支收尾 |
+| `jl-dispatching-parallel-agents` | Superpowers 同名 Skill | 独立任务并行分发 |
 
 不要直接修改 `synced/`。需要长期定制时，新建自建 Skill；需要跟进上游时，
 使用 `jl-sync-skills` 和同步脚本。
+
+Orchestra 在聊天中完成轻量设计和 Plan，不强制调用会写入设计/计划文件并设置
+额外确认门禁的完整 Superpowers 流程。需要深度设计或可持久化详细计划时，仍可
+单独调用 `jl-brainstorming`、`jl-writing-plans` 等同步 Skill。
 
 ## 常用用法
 

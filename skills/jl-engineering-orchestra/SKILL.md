@@ -1,6 +1,6 @@
 ---
 name: jl-engineering-orchestra
-description: Use only when the user explicitly invokes $jl-engineering-orchestra or selects it for a repository engineering task that benefits from deliberate design, optional isolation and TDD, delegated implementation, review, and evidence-based completion.
+description: Use only when the user explicitly invokes $jl-engineering-orchestra or selects it for a repository engineering task that benefits from plan-before-execution control, adaptive inline or multi-agent implementation, optional isolation, selective TDD, review, and evidence-based completion.
 ---
 
 # JL Engineering Orchestra
@@ -9,26 +9,26 @@ description: Use only when the user explicitly invokes $jl-engineering-orchestra
 
 Run the complete JL engineering workflow without making it the default for
 small or obvious tasks. Keep the current task responsible for scope, dispatch,
-review, correction, and final judgment. Delegate implementation when useful.
+review, correction, and final judgment. Default to multi-agent execution, but
+handle a simple, well-bounded change inline when delegation would add no value.
+
+Separate discussion from execution. Inspect, reason, and plan first. Do not
+modify the repository or start implementation until the user explicitly says
+`执行` after seeing the plan.
 
 ## Required JL dependencies
 
 Use only the installed `jl-*` dependencies listed below. Never silently fall
 back to an unprefixed or separately installed upstream version.
 
-- `jl-brainstorming`
-- `jl-writing-plans`
-- `jl-executing-plans`
 - `jl-dispatching-parallel-agents`
-- `jl-subagent-driven-development`
 - `jl-test-driven-development`
 - `jl-using-git-worktrees`
 - `jl-lean-tests`
 - `jl-requesting-code-review`
 - `jl-receiving-code-review`
 - `jl-verification-before-completion`
-- `jl-readme-blueprint-generator`
-- `jl-architecture-decision-records`
+- `jl-doc-steward`
 
 Before starting, resolve the installed Skill root as the parent directory of
 this `jl-engineering-orchestra` directory. Verify that every dependency has a
@@ -54,61 +54,114 @@ Preserve all pre-existing user work.
 
 ### 2. Shape the change
 
-Use `jl-brainstorming` to clarify the requirement, boundaries, acceptance
-criteria, and design. Keep ordinary engineering choices inside the team; ask
-the user only about missing product direction, authority, or material scope.
+Clarify the requirement, boundaries, acceptance criteria, and design in the
+conversation. Inspect repository evidence before proposing a solution. Ask the
+user only about missing product direction, authority, or material scope; infer
+ordinary engineering choices and explain them in the plan. Present alternatives
+only when they represent a material trade-off, and lead with a recommendation.
 
-### 3. Ask the three execution choices once
+### 3. Select defaults without routine questions
 
-Unless already specified, ask the user to choose:
+Honor explicit user choices. Otherwise infer execution mode, TDD, and isolation
+from the task and repository, record the decisions in the plan, and do not ask
+the user to choose among routine engineering preferences.
 
-1. TDD: yes or no.
-2. Isolation: Worktree or ordinary branch/current branch.
-3. Execution: subagents, visible tasks, or inline execution when delegation is
-   unavailable or unnecessary.
+Default to multi-agent execution. Work inline only when the requirement and
+acceptance criteria are clear, the change is localized and low-risk, it does
+not alter architecture, authorization, data migration, production boundaries,
+or a public contract, and the current task can implement and verify it
+directly.
 
-If Worktree is selected, use `jl-using-git-worktrees`. Otherwise:
+Judge complexity primarily by coupling, uncertainty, contract and operational
+risk, reversibility, and verification breadth. Use estimated or actual diff
+size, file count, dispersion, and review volume as lower-weight signals. Large
+mechanical or generated diffs can remain simple; a small authorization,
+migration, or public-contract diff can remain complex.
 
-- Continue an appropriate existing feature branch.
-- From a clean default branch, create a task branch from the agreed base.
-- If the working tree is dirty, do not move changes automatically; present the
-  current state and request a choice.
+Treat a task as medium when it may cross several components or layers but has
+one coherent outcome, known boundaries, a reversible approach, and a clear
+verification path. Treat cross-domain architecture, migrations, security or
+authorization, public-contract changes, hard-to-reverse behavior, or
+substantial unknowns as complex. Use multi-agent execution for both medium and
+complex tasks; scale parallel investigation, implementation isolation, and
+review depth to the actual complexity.
+
+Default to TDD only for development of a wholly new feature. Do not default to
+TDD for changes to existing features, interfaces, pages, bug fixes,
+compatibility work, or refactoring. This changes implementation order, not the
+obligation to add useful tests and run verification. The user's explicit TDD
+choice always overrides this default.
+
+Select a Worktree when the user requests one or isolation is needed to keep
+concurrent implementation safe. Otherwise plan to continue an appropriate
+existing feature branch or create an ordinary task branch from a clean default
+branch. If pre-existing changes make either choice unsafe, explain the exact
+state and ask only for the decision needed to preserve the user's work.
 
 ### 4. Plan
 
-Use `jl-writing-plans`. Make tasks independently reviewable, name exact files
-and commands, and keep the plan proportional to the request.
+Write the plan in the conversation without creating a plan file or modifying
+the repository. Make tasks independently reviewable, name exact files and
+commands when repository evidence supports them, and keep the plan
+proportional to the request. Include:
 
-### 5. Implement under supervision
+- complexity and the evidence behind it;
+- the low-weight estimated diff signal;
+- inline or multi-agent execution;
+- TDD and isolation decisions;
+- implementation, review, test, documentation, and verification steps;
+- authority boundaries and any unresolved blocker.
 
-For independent tasks, use `jl-dispatching-parallel-agents`. For a plan with
-separable implementation tasks, prefer `jl-subagent-driven-development`; use
-`jl-executing-plans` when inline execution is the chosen mode.
+End the plan by stating that no implementation has started and wait for the
+user to say `执行`. Treat approval, agreement, `继续`, or further discussion as
+feedback on the plan, not execution authorization.
+
+### 5. Pass the execution gate
+
+Begin implementation only after the user explicitly says `执行` for the
+presented plan. Until then, limit work to read-only inspection, discussion,
+design, risk analysis, and plan revision. Do not edit files, install
+dependencies, create branches or Worktrees, run implementation agents, commit,
+push, or open a pull request.
+
+After authorization, prepare the selected branch or Worktree. If the actual
+diff later reveals a material scope expansion, stop, reassess complexity and
+verification, present a revised plan, and wait for a new `执行` before
+continuing outside the approved scope.
+
+### 6. Implement under supervision
+
+For the default multi-agent mode, delegate bounded investigation,
+implementation, and review roles while the controller retains the full plan
+and final judgment. Use `jl-dispatching-parallel-agents` only for genuinely
+independent work that will not edit shared state. Run dependent or overlapping
+work sequentially. For a simple change, implement inline without introducing a
+delegation ceremony.
 
 The controller reviews raw diffs and evidence between tasks. Do not accept a
 worker's completion claim without inspection.
 
-If TDD was selected, use `jl-test-driven-development`. Whether or not TDD is
-selected, use `jl-lean-tests` to keep the suite focused on meaningful failures
-and stable contracts.
+If TDD applies under the default above or was explicitly selected, use
+`jl-test-driven-development`. Whether or not TDD applies, use `jl-lean-tests`
+to keep the suite focused on meaningful failures and stable contracts.
 
-### 6. Review and correct
+### 7. Review and correct
 
 Use `jl-requesting-code-review` after substantive implementation. Process
 feedback with `jl-receiving-code-review`: verify each finding against source,
 requirements, and executable evidence before accepting it. Apply the smallest
 complete correction and repeat review when the correction is material.
 
-### 7. Keep durable documentation honest
+### 8. Keep durable documentation honest
 
 Update documentation only when the change affects a documented user workflow,
 public command, setup step, compatibility promise, or architectural decision.
+Route documentation assessment, synchronization, creation, and review through
+`jl-doc-steward`. Let it select the appropriate document type and any required
+README or ADR sub-skill; do not call those sub-skills directly from this
+workflow.
 
-- Use `jl-readme-blueprint-generator` for README creation or material updates.
-- Use `jl-architecture-decision-records` only for long-lived architectural
-  choices, never routine implementation details.
-
-### 8. Prove completion
+### 9. Prove completion
 
 Use `jl-verification-before-completion`. Run the repository's required gates
 unless the user explicitly limits them, distinguish simulated checks from real
