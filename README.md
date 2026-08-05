@@ -5,7 +5,7 @@ Skill 完整副本；克隆仓库并运行安装脚本后，即可在 Codex 中�
 `jl-*` 名称。
 
 仓库是本机安装内容的唯一来源：`skills/` 可以直接维护，`synced/` 只能通过
-同步脚本从固定上游重新生成。当前包含 20 个 Skill，其中 6 个自建、14 个
+同步脚本从固定上游重新生成。当前包含 21 个 Skill，其中 7 个自建、14 个
 上游同步。
 
 ## 特点
@@ -128,12 +128,14 @@ Orchestra 调用后只进行只读检查、方案讨论和计划输出。用户�
 `执行` 后才会修改仓库、创建分支或 Worktree、安装依赖、分配实施代理或执行
 发布操作；`可以`、`继续` 或对方案表示认可不会越过执行门禁。
 
-以下 4 个低误触 Skill 允许根据明确的自然语言请求自动调用：
+以下 5 个低误触 Skill 允许根据明确的自然语言请求自动调用：
 
 - `jl-clean-branches`：清理已合并分支或 Worktree。
 - `jl-sync-skills`：检查或同步 Skill 上游更新。
 - `jl-doc-steward`：创建、更新或审查指定工程文档。
 - `jl-lean-tests`：明确要求设计、编写、精简或审查测试。
+- `jl-prompt-architect`：明确进行 Prompt Engineering，或编写、审查供 AI
+  模型、Agent、工具或 Runtime 使用的提示词。
 
 完整 Orchestra、ChatGPT Pro 协作流和所有 `synced/` 工作流组件仍要求显式
 `$jl-*` 调用，避免普通任务自动进入重流程。
@@ -164,6 +166,7 @@ Orchestra 调用后只进行只读检查、方案讨论和计划输出。用户�
 | `jl-clean-branches` | 扫描远程合并状态并安全清理分支和 Worktree |
 | `jl-sync-skills` | 汇总上游变化并按用户选择更新同步 Skill |
 | `jl-doc-steward` | 创建、同步、审查核心工程文档和 Agent 指令文档 |
+| `jl-prompt-architect` | 设计、撰写和审查可直接使用的分层 AI 提示词与 Runtime 契约 |
 
 ## 上游同步 Skill
 
@@ -206,6 +209,7 @@ $jl-readme-blueprint-generator 更新 README
 $jl-architecture-decision-records 记录这个架构决定
 $jl-clean-ddd-hexagonal 设计或审查复杂业务后端的架构边界
 $jl-doc-steward 同步这次代码改动影响的项目文档
+$jl-prompt-architect 为这个 Agent 设计 system、tool 和 recovery 提示词
 $jl-sync-skills 检查上游更新
 ```
 

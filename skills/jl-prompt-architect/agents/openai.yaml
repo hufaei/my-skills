@@ -1,0 +1,6 @@
+interface:
+  display_name: "JL Prompt Architect"
+  short_description: "面向真实用途设计、撰写与审查分层且可执行的 AI 提示词"
+  default_prompt: "使用 $jl-prompt-architect 为以下用途设计一段可直接使用的提示词：<目标、运行环境与约束>"
+policy:
+  allow_implicit_invocation: true
