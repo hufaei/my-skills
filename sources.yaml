@@ -16,9 +16,12 @@
       "destination": "skills/jl-chatgpt-pro-conductor"
     },
     {
-      "name": "jl-lean-tests",
+      "name": "jl-test-philosophy",
       "kind": "owned",
-      "destination": "skills/jl-lean-tests"
+      "destination": "skills/jl-test-philosophy",
+      "replaces": [
+        "jl-lean-tests"
+      ]
     },
     {
       "name": "jl-clean-branches",
@@ -34,6 +37,11 @@
       "name": "jl-doc-steward",
       "kind": "owned",
       "destination": "skills/jl-doc-steward"
+    },
+    {
+      "name": "jl-prompt-architect",
+      "kind": "owned",
+      "destination": "skills/jl-prompt-architect"
     },
     {
       "name": "jl-brainstorming",

@@ -24,7 +24,7 @@ back to an unprefixed or separately installed upstream version.
 - `jl-dispatching-parallel-agents`
 - `jl-test-driven-development`
 - `jl-using-git-worktrees`
-- `jl-lean-tests`
+- `jl-test-philosophy`
 - `jl-requesting-code-review`
 - `jl-receiving-code-review`
 - `jl-verification-before-completion`
@@ -142,8 +142,10 @@ The controller reviews raw diffs and evidence between tasks. Do not accept a
 worker's completion claim without inspection.
 
 If TDD applies under the default above or was explicitly selected, use
-`jl-test-driven-development`. Whether or not TDD applies, use `jl-lean-tests`
-to keep the suite focused on meaningful failures and stable contracts.
+`jl-test-driven-development`. Whether or not TDD applies, use
+`jl-test-philosophy` to integrate each discovered risk into the existing test
+model and choose additions, revisions, consolidation, or omissions by decision
+confidence and maintenance cost.
 
 ### 7. Review and correct
 

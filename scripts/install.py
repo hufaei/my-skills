@@ -16,6 +16,7 @@ import uuid
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 SKILL_ROOTS = (REPO_ROOT / "skills", REPO_ROOT / "synced")
+MANIFEST_PATH = REPO_ROOT / "sources.yaml"
 SOURCE_ID = "https://github.com/hufaei/my-skills"
 MARKER_NAME = ".jl-install.json"
 
@@ -37,6 +38,25 @@ def default_destination() -> Path:
     codex_home = os.environ.get("CODEX_HOME")
     base = Path(codex_home).expanduser() if codex_home else Path.home() / ".codex"
     return base / "skills"
+
+
+def discover_replacements(skills: list[Path]) -> dict[str, str]:
+    manifest = json.loads(MANIFEST_PATH.read_text(encoding="utf-8"))
+    available = {path.name for path in skills}
+    replacements: dict[str, str] = {}
+    for entry in manifest.get("skills", []):
+        replacement = entry.get("name")
+        for retired in entry.get("replaces", []):
+            if replacement not in available:
+                raise ValueError(f"replacement skill is unavailable: {replacement}")
+            if not isinstance(retired, str) or not retired.startswith("jl-"):
+                raise ValueError(f"invalid retired skill name: {retired!r}")
+            if retired in available:
+                raise ValueError(f"retired skill is still available: {retired}")
+            if retired in replacements:
+                raise ValueError(f"duplicate retired skill name: {retired}")
+            replacements[retired] = replacement
+    return replacements
 
 
 def tree_digest(root: Path) -> str:
@@ -113,6 +133,24 @@ def classify_target(target: Path, source_digest: str) -> tuple[str, str | None]:
     return "conflict", "installed copy has unmanaged or local changes"
 
 
+def classify_retired_target(target: Path) -> tuple[str, str | None]:
+    if not target.exists() and not target.is_symlink():
+        return "absent", None
+    if target.is_symlink() or not target.is_dir():
+        return "conflict", "retired path is not a managed skill directory"
+
+    installed_digest = tree_digest(target)
+    marker = read_marker(target)
+    if (
+        marker is not None
+        and marker.get("repository") == SOURCE_ID
+        and marker.get("skill") == target.name
+        and marker.get("content_sha256") == installed_digest
+    ):
+        return "retire", None
+    return "conflict", "retired skill has unmanaged or local changes"
+
+
 def remove_path(path: Path) -> None:
     if path.is_symlink() or path.is_file():
         path.unlink()
@@ -163,7 +201,9 @@ def install(destination: Path, dry_run: bool) -> int:
         print("No jl-* skills found.", file=sys.stderr)
         return 1
 
+    replacements = discover_replacements(skills)
     plan: list[tuple[str, Path, Path, str]] = []
+    retirement_plan: list[tuple[Path, str]] = []
     conflicts: list[tuple[Path, str]] = []
     for source in skills:
         source_digest = tree_digest(source)
@@ -173,6 +213,14 @@ def install(destination: Path, dry_run: bool) -> int:
             conflicts.append((target, reason or "unknown conflict"))
         else:
             plan.append((action, source, target, source_digest))
+
+    for retired, replacement in replacements.items():
+        target = destination / retired
+        action, reason = classify_retired_target(target)
+        if action == "conflict":
+            conflicts.append((target, reason or "unknown conflict"))
+        elif action == "retire":
+            retirement_plan.append((target, replacement))
 
     if conflicts:
         print("Refusing to overwrite conflicting skill paths:", file=sys.stderr)
@@ -185,6 +233,8 @@ def install(destination: Path, dry_run: bool) -> int:
         for action, source, target, source_digest in plan:
             if action != "unchanged":
                 replace_with_copy(source, target, source_digest)
+        for target, _ in retirement_plan:
+            remove_path(target)
 
     changed = 0
     for action, source, target, _ in plan:
@@ -196,10 +246,15 @@ def install(destination: Path, dry_run: bool) -> int:
             verb = "Would update" if dry_run else "Updated"
         print(f"{verb} {target} from {source}")
 
+    for target, replacement in retirement_plan:
+        verb = "Would remove" if dry_run else "Removed"
+        print(f"{verb} retired {target}; replaced by {replacement}")
+
     unchanged = len(plan) - changed
     print(
         f"Available JL skills: {len(skills)}; "
-        f"changed: {changed}; unchanged: {unchanged}"
+        f"changed: {changed}; unchanged: {unchanged}; "
+        f"retired: {len(retirement_plan)}"
     )
     return 0
 

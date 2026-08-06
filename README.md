@@ -17,7 +17,7 @@ Skill 完整副本；克隆仓库并运行安装脚本后，即可在 Codex 中�
 - **可追溯同步：** 上游地址、源路径、固定提交、内容 SHA-256、许可证和机械
   转换规则记录在 [`sources.yaml`](sources.yaml)。
 - **安全安装：** 安装脚本生成独立的全局副本；发现未受管理的同名内容或本机
-  修改时会拒绝覆盖。
+  修改时会拒绝覆盖；重命名后只清理未被本机修改的旧受管副本。
 
 ## 安装
 
@@ -133,7 +133,7 @@ Orchestra 调用后只进行只读检查、方案讨论和计划输出。用户�
 - `jl-clean-branches`：清理已合并分支或 Worktree。
 - `jl-sync-skills`：检查或同步 Skill 上游更新。
 - `jl-doc-steward`：创建、更新或审查指定工程文档。
-- `jl-lean-tests`：明确要求设计、编写、精简或审查测试。
+- `jl-test-philosophy`：明确要求设计、编写、精简或审查测试与测试策略。
 - `jl-prompt-architect`：明确进行 Prompt Engineering，或编写、审查供 AI
   模型、Agent、工具或 Runtime 使用的提示词。
 
@@ -147,8 +147,8 @@ Orchestra 调用后只进行只读检查、方案讨论和计划输出。用户�
 - 任务复杂度主要依据耦合、未知量、契约与运行风险、可逆性和验证范围判断；
   预计或实际 Diff、文件数量和 Review 工作量也参与判断，但权重较低。
 - 全新功能开发默认采用 TDD；调整现有功能、接口或页面，以及缺陷修复、兼容
-  和重构，默认不走 TDD。两种情况都使用 `jl-lean-tests` 控制测试信号，避免
-  无意义回归、精确文案和纯覆盖率测试膨胀。
+  和重构，默认不走 TDD。两种情况都使用 `jl-test-philosophy` 判断测试应当
+  新增、强化、合并、删除还是不写，让每轮发现的风险融入连贯的测试模型。
 - Worktree 按隔离需要自动选择；普通任务使用适当的现有分支或功能分支，只在
   并发实施需要隔离、用户明确指定或仓库状态无法安全处理时使用或询问。
 - 当前任务负责统筹、分发、Review 和验收；所有文档判断与同步统一交给
@@ -162,7 +162,7 @@ Orchestra 调用后只进行只读检查、方案讨论和计划输出。用户�
 | --- | --- |
 | `jl-engineering-orchestra` | 手动启动先计划、再按执行口令实施和验收的工程工作流 |
 | `jl-chatgpt-pro-conductor` | 本地 Codex 实施，网页版 ChatGPT Pro 统筹并最终 Review |
-| `jl-lean-tests` | 只为真实故障和稳定契约编写精简测试 |
+| `jl-test-philosophy` | 以决策信心和维护成本设计、审查连贯的测试套件 |
 | `jl-clean-branches` | 扫描远程合并状态并安全清理分支和 Worktree |
 | `jl-sync-skills` | 汇总上游变化并按用户选择更新同步 Skill |
 | `jl-doc-steward` | 创建、同步、审查核心工程文档和 Agent 指令文档 |
@@ -203,7 +203,7 @@ Orchestra 在聊天中完成轻量设计和 Plan，不强制调用会写入设�
 
 ```text
 $jl-brainstorming 把这个想法收敛成设计
-$jl-lean-tests 为这次改动设计少而有效的测试
+$jl-test-philosophy 为这次改动设计风险明确、可维护的测试
 $jl-clean-branches 清理这个仓库已合并的分支和 Worktree
 $jl-readme-blueprint-generator 更新 README
 $jl-architecture-decision-records 记录这个架构决定

@@ -1,0 +1,6 @@
+interface:
+  display_name: "JL Test Philosophy"
+  short_description: "用风险、契约与维护成本设计可信且连贯的自动化测试"
+  default_prompt: "使用 $jl-test-philosophy 为这次改动设计或审查风险明确、可维护的测试：<改动或测试范围>"
+policy:
+  allow_implicit_invocation: true
