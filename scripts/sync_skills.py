@@ -178,6 +178,34 @@ def replace_directory(staged: Path, destination: Path) -> None:
         shutil.rmtree(backup)
 
 
+def copy_source(source: Path, staged: Path, entry: dict[str, Any]) -> None:
+    include_paths = entry.get("include_paths")
+    if not include_paths:
+        # A Skill may live at the upstream repository root. Git's own
+        # metadata is never part of the distributable Skill package.
+        shutil.copytree(source, staged, ignore=shutil.ignore_patterns(".git"))
+        return
+
+    staged.mkdir()
+    for item in include_paths:
+        relative = Path(item)
+        if relative.is_absolute() or ".." in relative.parts:
+            raise RuntimeError(f"Invalid include path for {entry['name']}: {item}")
+        source_item = source / relative
+        destination_item = staged / relative
+        if source_item.is_dir():
+            shutil.copytree(
+                source_item,
+                destination_item,
+                ignore=shutil.ignore_patterns(".git"),
+            )
+        elif source_item.is_file():
+            destination_item.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copy2(source_item, destination_item)
+        else:
+            raise RuntimeError(f"Missing include path for {entry['name']}: {item}")
+
+
 def apply(manifest: dict[str, Any], requested: set[str]) -> None:
     entries = synced_entries(manifest)
     known = {entry["name"] for entry in entries}
@@ -220,7 +248,7 @@ def apply(manifest: dict[str, Any], requested: set[str]) -> None:
             ) as stage_parent_text:
                 stage_parent = Path(stage_parent_text)
                 staged = stage_parent / entry["name"]
-                shutil.copytree(source, staged)
+                copy_source(source, staged, entry)
                 transform_tree(staged, entry, source_names)
                 generated_hash = tree_hash(staged)
                 replace_directory(staged, destination)

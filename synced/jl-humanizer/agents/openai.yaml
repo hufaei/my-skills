@@ -1,0 +1,6 @@
+interface:
+  display_name: "JL Humanizer"
+  short_description: "保留原意和事实，去除 AI 写作痕迹，让文本更自然"
+  default_prompt: "使用 $jl-humanizer 在保留原意和事实的前提下，让这段文字更自然、更像人写的：<文本>"
+policy:
+  allow_implicit_invocation: false

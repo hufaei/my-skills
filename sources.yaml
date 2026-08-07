@@ -267,6 +267,26 @@
       "replacements": []
     },
     {
+      "name": "jl-humanizer",
+      "kind": "synced",
+      "role": "primary",
+      "repo": "https://github.com/blader/humanizer.git",
+      "ref": "HEAD",
+      "source_name": "humanizer",
+      "source_path": ".",
+      "include_paths": [
+        "SKILL.md"
+      ],
+      "destination": "synced/jl-humanizer",
+      "commit": "523374dee72d67c7b2b5f858ea0094ffda49c3ac",
+      "content_sha256": "8c069602161782a4bbae0c129f6e0dbc59e101fe9c38598ef5d369b4eef8ff3a",
+      "license": "MIT",
+      "display_name": "JL Humanizer",
+      "short_description": "保留原意和事实，去除 AI 写作痕迹，让文本更自然",
+      "default_prompt": "使用 $jl-humanizer 在保留原意和事实的前提下，让这段文字更自然、更像人写的：<文本>",
+      "replacements": []
+    },
+    {
       "name": "jl-subagent-driven-development",
       "kind": "synced",
       "role": "dependency",

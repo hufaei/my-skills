@@ -5,7 +5,7 @@ Skill 完整副本；克隆仓库并运行安装脚本后，即可在 Codex 中�
 `jl-*` 名称。
 
 仓库是本机安装内容的唯一来源：`skills/` 可以直接维护，`synced/` 只能通过
-同步脚本从固定上游重新生成。当前包含 21 个 Skill，其中 7 个自建、14 个
+同步脚本从固定上游重新生成。当前包含 22 个 Skill，其中 7 个自建、15 个
 上游同步。
 
 ## 特点
@@ -186,6 +186,7 @@ Orchestra 调用后只进行只读检查、方案讨论和计划输出。用户�
 | `jl-readme-blueprint-generator` | GitHub Awesome Copilot `readme-blueprint-generator` | README |
 | `jl-architecture-decision-records` | ECC `architecture-decision-records` | ADR |
 | `jl-clean-ddd-hexagonal` | robust-skills `clean-ddd-hexagonal` | DDD、整洁架构与六边形架构 |
+| `jl-humanizer` | blader `humanizer` | 保留事实与原意，去除文本中的 AI 写作痕迹 |
 | `jl-subagent-driven-development` | Superpowers 同名 Skill | 结构化多代理实施 |
 | `jl-finishing-a-development-branch` | Superpowers 同名 Skill | 分支收尾 |
 | `jl-dispatching-parallel-agents` | Superpowers 同名 Skill | 独立任务并行分发 |
@@ -210,12 +211,17 @@ $jl-architecture-decision-records 记录这个架构决定
 $jl-clean-ddd-hexagonal 设计或审查复杂业务后端的架构边界
 $jl-doc-steward 同步这次代码改动影响的项目文档
 $jl-prompt-architect 为这个 Agent 设计 system、tool 和 recovery 提示词
+$jl-humanizer 在保留事实和原意的前提下，让这段文字更自然：<文本>
 $jl-sync-skills 检查上游更新
 ```
 
 `jl-clean-ddd-hexagonal` 适合复杂业务规则、长期维护、多个入口或外部适配器，
 以及需要修复领域层反向依赖基础设施的后端。简单 CRUD、一次性原型或没有真实
 业务不变量的项目不应使用完整架构。
+
+`jl-humanizer` 是按需使用的文本编辑 Skill，不会自动改写所有 Codex 回复。
+它适合润色已有文本，也可以根据用户提供的写作样本校准语气；改写必须保留
+原有事实，不应为了显得自然而补充来源中没有的信息。
 
 `jl-doc-steward` 管理 README、ADR、API、架构、设计/RFC、CHANGELOG、
 CONTRIBUTING/DEVELOPMENT、AGENTS.md 和 CLAUDE.md。README 和 ADR 分别复用
@@ -258,5 +264,6 @@ python3 scripts/sync_skills.py apply jl-brainstorming
 - [github/awesome-copilot](https://github.com/github/awesome-copilot)
 - [affaan-m/ECC](https://github.com/affaan-m/ECC)
 - [ccheney/robust-skills](https://github.com/ccheney/robust-skills)
+- [blader/humanizer](https://github.com/blader/humanizer)
 
 许可证和归属说明见 [`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md)。
