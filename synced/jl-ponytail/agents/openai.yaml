@@ -1,0 +1,6 @@
+interface:
+  display_name: "JL Ponytail"
+  short_description: "默认选择能完整交付需求的最小生产实现"
+  default_prompt: "使用 $jl-ponytail 选择能完整满足需求的最小实现，先理解真实调用链，再减少代码。"
+policy:
+  allow_implicit_invocation: true

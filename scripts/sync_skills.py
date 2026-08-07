@@ -100,6 +100,9 @@ def render_openai_yaml(entry: dict[str, Any]) -> str:
     def quoted(value: str) -> str:
         return json.dumps(value, ensure_ascii=False)
 
+    implicit_invocation = (
+        "true" if entry.get("allow_implicit_invocation", False) else "false"
+    )
     return "\n".join(
         [
             "interface:",
@@ -107,7 +110,7 @@ def render_openai_yaml(entry: dict[str, Any]) -> str:
             f"  short_description: {quoted(entry['short_description'])}",
             f"  default_prompt: {quoted(entry['default_prompt'])}",
             "policy:",
-            "  allow_implicit_invocation: false",
+            f"  allow_implicit_invocation: {implicit_invocation}",
             "",
         ]
     )

@@ -24,6 +24,7 @@ back to an unprefixed or separately installed upstream version.
 - `jl-dispatching-parallel-agents`
 - `jl-test-driven-development`
 - `jl-using-git-worktrees`
+- `jl-ponytail`
 - `jl-test-philosophy`
 - `jl-requesting-code-review`
 - `jl-receiving-code-review`
@@ -92,6 +93,13 @@ compatibility work, or refactoring. This changes implementation order, not the
 obligation to add useful tests and run verification. The user's explicit TDD
 choice always overrides this default.
 
+Default to `jl-ponytail` at full intensity for production implementation. Apply
+its minimal-solution ladder only after the requirement and real code path are
+understood. It may reduce code, files, dependencies, and abstractions; it may not
+shrink accepted behavior, architecture boundaries, validation, error handling,
+security, accessibility, migration safety, or verification. The user's explicit
+choice to disable or change its intensity always overrides this default.
+
 Select a Worktree when the user requests one or isolation is needed to keep
 concurrent implementation safe. Otherwise plan to continue an appropriate
 existing feature branch or create an ordinary task branch from a clean default
@@ -108,7 +116,7 @@ proportional to the request. Include:
 - complexity and the evidence behind it;
 - the low-weight estimated diff signal;
 - inline or multi-agent execution;
-- TDD and isolation decisions;
+- TDD, Ponytail, and isolation decisions;
 - implementation, review, test, documentation, and verification steps;
 - authority boundaries and any unresolved blocker.
 
@@ -138,6 +146,10 @@ independent work that will not edit shared state. Run dependent or overlapping
 work sequentially. For a simple change, implement inline without introducing a
 delegation ceremony.
 
+Before writing or changing production code, read and apply `jl-ponytail` at the
+selected intensity. Use it to find the smallest complete implementation, not to
+skip repository inspection or reinterpret the accepted scope.
+
 The controller reviews raw diffs and evidence between tasks. Do not accept a
 worker's completion claim without inspection.
 
@@ -145,7 +157,8 @@ If TDD applies under the default above or was explicitly selected, use
 `jl-test-driven-development`. Whether or not TDD applies, use
 `jl-test-philosophy` to integrate each discovered risk into the existing test
 model and choose additions, revisions, consolidation, or omissions by decision
-confidence and maintenance cost.
+confidence and maintenance cost. `jl-test-philosophy` owns test selection and
+suite shape when its guidance differs from Ponytail's bundled check preference.
 
 ### 7. Review and correct
 
