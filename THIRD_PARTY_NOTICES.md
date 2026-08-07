@@ -12,3 +12,4 @@ licenses remain with their respective owners.
 | [affaan-m/ECC](https://github.com/affaan-m/ECC) | Copyright © 2026 Affaan Mustafa | [`licenses/ecc-MIT.txt`](licenses/ecc-MIT.txt) |
 | [ccheney/robust-skills](https://github.com/ccheney/robust-skills) | Copyright © 2026 robust-skills contributors | [`licenses/robust-skills-MIT.txt`](licenses/robust-skills-MIT.txt) |
 | [blader/humanizer](https://github.com/blader/humanizer) | Copyright © 2025 Siqi Chen | [`licenses/humanizer-MIT.txt`](licenses/humanizer-MIT.txt) |
+| [JuliusBrussee/caveman](https://github.com/JuliusBrussee/caveman) | Copyright © 2026 Julius Brussee | [`licenses/caveman-MIT.txt`](licenses/caveman-MIT.txt) |
