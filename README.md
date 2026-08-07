@@ -5,7 +5,7 @@ Skill 完整副本；克隆仓库并运行安装脚本后，即可在 Codex 中�
 `jl-*` 名称。
 
 仓库是本机安装内容的唯一来源：`skills/` 可以直接维护，`synced/` 只能通过
-同步脚本从固定上游重新生成。当前包含 23 个 Skill，其中 7 个自建、16 个
+同步脚本从固定上游重新生成。当前包含 24 个 Skill，其中 7 个自建、17 个
 上游同步。
 
 ## 特点
@@ -128,7 +128,7 @@ Orchestra 调用后只进行只读检查、方案讨论和计划输出。用户�
 `执行` 后才会修改仓库、创建分支或 Worktree、安装依赖、分配实施代理或执行
 发布操作；`可以`、`继续` 或对方案表示认可不会越过执行门禁。
 
-以下 5 个低误触 Skill 允许根据明确的自然语言请求自动调用：
+以下 6 个 Skill 允许根据明确的自然语言请求自动调用：
 
 - `jl-clean-branches`：清理已合并分支或 Worktree。
 - `jl-sync-skills`：检查或同步 Skill 上游更新。
@@ -136,9 +136,10 @@ Orchestra 调用后只进行只读检查、方案讨论和计划输出。用户�
 - `jl-test-philosophy`：明确要求设计、编写、精简或审查测试与测试策略。
 - `jl-prompt-architect`：明确进行 Prompt Engineering，或编写、审查供 AI
   模型、Agent、工具或 Runtime 使用的提示词。
+- `jl-ponytail`：编码任务默认寻找能完整满足需求的最小实现；非编码任务不调用。
 
-完整 Orchestra、ChatGPT Pro 协作流和所有 `synced/` 工作流组件仍要求显式
-`$jl-*` 调用，避免普通任务自动进入重流程。
+完整 Orchestra、ChatGPT Pro 协作流，以及除 `jl-ponytail` 外的所有
+`synced/` 工作流组件仍要求显式 `$jl-*` 调用，避免普通任务自动进入重流程。
 
 在完整工作流中：
 
@@ -149,6 +150,9 @@ Orchestra 调用后只进行只读检查、方案讨论和计划输出。用户�
 - 全新功能开发默认采用 TDD；调整现有功能、接口或页面，以及缺陷修复、兼容
   和重构，默认不走 TDD。两种情况都使用 `jl-test-philosophy` 判断测试应当
   新增、强化、合并、删除还是不写，让每轮发现的风险融入连贯的测试模型。
+- 生产实现默认使用 `jl-ponytail` 寻找能完整交付需求的最小方案；它可以减少
+  代码和抽象，但测试取舍仍由 `jl-test-philosophy` 决定，也不能削弱安全、
+  可访问性、错误处理、迁移安全或已确认的架构边界。
 - Worktree 按隔离需要自动选择；普通任务使用适当的现有分支或功能分支，只在
   并发实施需要隔离、用户明确指定或仓库状态无法安全处理时使用或询问。
 - 当前任务负责统筹、分发、Review 和验收；所有文档判断与同步统一交给
@@ -188,6 +192,7 @@ Orchestra 调用后只进行只读检查、方案讨论和计划输出。用户�
 | `jl-clean-ddd-hexagonal` | robust-skills `clean-ddd-hexagonal` | DDD、整洁架构与六边形架构 |
 | `jl-humanizer` | blader `humanizer` | 保留事实与原意，去除文本中的 AI 写作痕迹 |
 | `jl-caveman` | JuliusBrussee `caveman` | 按需压缩 Codex 的对话表达 |
+| `jl-ponytail` | DietrichGebert `ponytail` | 默认寻找满足需求的最小生产实现 |
 | `jl-subagent-driven-development` | Superpowers 同名 Skill | 结构化多代理实施 |
 | `jl-finishing-a-development-branch` | Superpowers 同名 Skill | 分支收尾 |
 | `jl-dispatching-parallel-agents` | Superpowers 同名 Skill | 独立任务并行分发 |
@@ -214,6 +219,7 @@ $jl-doc-steward 同步这次代码改动影响的项目文档
 $jl-prompt-architect 为这个 Agent 设计 system、tool 和 recovery 提示词
 $jl-humanizer 在保留事实和原意的前提下，让这段文字更自然：<文本>
 $jl-caveman 以 full 模式压缩本任务的交流，直到我说正常模式
+$jl-ponytail 为这个编码任务选择满足需求的最小实现
 $jl-sync-skills 检查上游更新
 ```
 
@@ -228,6 +234,10 @@ $jl-sync-skills 检查上游更新
 `jl-caveman` 只压缩对话表达，不缩短隐藏推理、输入上下文、代码、命令或错误
 信息。它默认手动调用，并在当前任务中持续生效，直到用户说“正常模式”或选择
 关闭；安全警告、不可逆操作确认和容易歧义的步骤会恢复完整表达。
+
+`jl-ponytail` 允许在编码任务中自动调用，默认使用 full 强度。它先理解需求和
+真实调用链，再按现有实现、标准库、平台能力、已有依赖和最小新增代码的顺序
+选择方案；说“stop ponytail”可以在当前任务关闭。它不适用于普通写作或问答。
 
 `jl-doc-steward` 管理 README、ADR、API、架构、设计/RFC、CHANGELOG、
 CONTRIBUTING/DEVELOPMENT、AGENTS.md 和 CLAUDE.md。README 和 ADR 分别复用
@@ -272,5 +282,6 @@ python3 scripts/sync_skills.py apply jl-brainstorming
 - [ccheney/robust-skills](https://github.com/ccheney/robust-skills)
 - [blader/humanizer](https://github.com/blader/humanizer)
 - [JuliusBrussee/caveman](https://github.com/JuliusBrussee/caveman)
+- [DietrichGebert/ponytail](https://github.com/DietrichGebert/ponytail)
 
 许可证和归属说明见 [`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md)。

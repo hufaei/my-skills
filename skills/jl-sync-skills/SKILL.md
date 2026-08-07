@@ -29,8 +29,9 @@ keep every change reviewable in Git.
    Do not apply anything before the user chooses.
 5. Run `python3 scripts/sync_skills.py apply <skill...>` for the selected names.
    The script copies the upstream directory, adds only the configured `jl-`
-   namespace and dependency transforms, generates manual-invocation UI metadata,
-   updates source commits and hashes, and refuses unmanaged local edits.
+   namespace and dependency transforms, generates UI metadata from the declared
+   invocation policy, updates source commits and hashes, and refuses unmanaged
+   local edits.
 6. Review the resulting Git diff. Call out any unexpected content or transform
    failure instead of repairing a synced directory manually.
 7. Ask whether to leave changes in the working tree, create commits, or create

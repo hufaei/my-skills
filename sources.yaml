@@ -312,6 +312,37 @@
       ]
     },
     {
+      "name": "jl-ponytail",
+      "kind": "synced",
+      "role": "primary",
+      "repo": "https://github.com/DietrichGebert/ponytail.git",
+      "ref": "HEAD",
+      "source_name": "ponytail",
+      "source_path": "skills/ponytail",
+      "destination": "synced/jl-ponytail",
+      "commit": "16f29800fd2681bdf24f3eb4ccffe38be3baec6b",
+      "content_sha256": "61c82f5eb38ace04daec4e4e1200c2e44686319446f87221a100c4decabfb273",
+      "license": "MIT",
+      "display_name": "JL Ponytail",
+      "short_description": "默认选择能完整交付需求的最小生产实现",
+      "default_prompt": "使用 $jl-ponytail 选择能完整满足需求的最小实现，先理解真实调用链，再减少代码。",
+      "allow_implicit_invocation": true,
+      "replacements": [
+        [
+          "argument-hint: \"[lite|full|ultra]\"\n",
+          ""
+        ],
+        [
+          "/ponytail",
+          "$jl-ponytail"
+        ],
+        [
+          "pair with Caveman",
+          "pair with $jl-caveman"
+        ]
+      ]
+    },
+    {
       "name": "jl-subagent-driven-development",
       "kind": "synced",
       "role": "dependency",
