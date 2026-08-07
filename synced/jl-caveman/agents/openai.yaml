@@ -1,0 +1,6 @@
+interface:
+  display_name: "JL Caveman"
+  short_description: "按需压缩对话表达，保留代码、命令和技术信息"
+  default_prompt: "使用 $jl-caveman 以 full 模式压缩本任务的交流，直到我说正常模式。"
+policy:
+  allow_implicit_invocation: false
