@@ -30,8 +30,19 @@ artifacts:
 
 Inspect relevant source code, prompt assembly, tool schemas, or runtime
 documentation when available. Do not invent capabilities or instruction priority.
-Ask one focused question only when the missing answer changes the architecture;
-otherwise use a conspicuous placeholder such as `{{TARGET_MODEL}}`.
+Ask one focused question at a time, and continue asking only while a missing
+answer changes the architecture; otherwise use a conspicuous placeholder such as
+`{{TARGET_MODEL}}`.
+
+Keep three layers distinct: the **product surface** owns interaction and rendering,
+the **model prompt** owns stable behavior, and the **runtime** owns injected context,
+capabilities, permissions, and state. A shared model does not imply shared memory,
+tools, or authority across surfaces.
+
+Also keep three kinds of authority independent: instruction priority decides what
+must be obeyed, source authority decides where facts come from, and action authority
+decides which effects are permitted. Strong evidence does not grant permission, and
+high-priority style instructions do not create facts.
 
 ## Choose the smallest fitting shape
 
@@ -66,6 +77,11 @@ Define the cognitive architecture through observable decisions and checkpoints:
 - Separate diagnosis from mutation, observation from inference, and a delegated
   result from verified evidence.
 - Specify what must be checked, not private chain-of-thought that must be exposed.
+- Classify the request before acting: answer, review, and status requests authorize
+  inspection and reporting; diagnosis does not imply repair; change requests cover
+  normal in-scope implementation; monitoring authorizes observation, not new effects.
+- Ground `done`, `fixed`, `saved`, `sent`, and `verified` in fresh evidence observed
+  during the current execution. Report skipped, failed, or partial checks plainly.
 
 Prefer `inspect → diagnose → change → verify` over “think carefully.” Prefer a
 concrete completion test over “provide the best answer.”
@@ -86,6 +102,8 @@ Make the language carry behavior:
   restate the rule.
 - Match the target model's language, markup, and tool-call contract. Do not add
   decorative headings or ceremonial roles.
+- Treat prose, tables, visuals, artifacts, and response components as presentation.
+  They may expose evidence, but cannot manufacture facts or broaden permission.
 
 Let rhythm reveal hierarchy: rule, reason when non-obvious, then the smallest
 example that disambiguates it.
@@ -138,9 +156,10 @@ the model to reveal private reasoning.
 
 ## Deliver
 
-Lead with the copyable prompt in a fenced block or the requested target file. Then
-state only the architecture choice, unresolved placeholders, and material trade-offs
-the user needs to deploy or revise it. When revising an existing prompt, explain the
-behavioral change rather than narrating every wording edit.
+Lead with the copyable prompt in a fenced block or the requested target file. When
+deployment depends on them, state the architecture choice, unresolved placeholders,
+and material trade-offs the user needs to deploy or revise it. When revising an
+existing prompt, explain the behavioral change rather than narrating every wording
+edit.
 
 If the user asks for “just the prompt,” provide just the deployable prompt.
