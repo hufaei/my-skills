@@ -5,7 +5,7 @@ Skill 完整副本；克隆仓库并运行安装脚本后，即可在 Codex 中�
 `jl-*` 名称。
 
 仓库是本机安装内容的唯一来源：`skills/` 可以直接维护，`synced/` 只能通过
-同步脚本从固定上游重新生成。当前包含 24 个 Skill，其中 7 个自建、17 个
+同步脚本从固定上游重新生成。当前包含 25 个 Skill，其中 8 个自建、17 个
 上游同步。
 
 ## 特点
@@ -171,6 +171,7 @@ Orchestra 调用后只进行只读检查、方案讨论和计划输出。用户�
 | `jl-sync-skills` | 汇总上游变化并按用户选择更新同步 Skill |
 | `jl-doc-steward` | 创建、同步、审查核心工程文档和 Agent 指令文档 |
 | `jl-prompt-architect` | 设计、撰写和审查可直接使用的分层 AI 提示词与 Runtime 契约 |
+| `jl-pr-steward` | 把当前分支交给新任务，并按用户指令处理 GitHub PR Review |
 
 ## 上游同步 Skill
 
@@ -217,6 +218,7 @@ $jl-architecture-decision-records 记录这个架构决定
 $jl-clean-ddd-hexagonal 设计或审查复杂业务后端的架构边界
 $jl-doc-steward 同步这次代码改动影响的项目文档
 $jl-prompt-architect 为这个 Agent 设计 system、tool 和 recovery 提示词
+$jl-pr-steward 把当前分支交给一个新任务管理 GitHub PR
 $jl-humanizer 在保留事实和原意的前提下，让这段文字更自然：<文本>
 $jl-caveman 以 full 模式压缩本任务的交流，直到我说正常模式
 $jl-ponytail 为这个编码任务选择满足需求的最小实现

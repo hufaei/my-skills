@@ -1,0 +1,6 @@
+interface:
+  display_name: "JL PR Steward"
+  short_description: "将当前分支交给新任务并按指令处理 GitHub PR Review"
+  default_prompt: "使用 $jl-pr-steward 将当前分支交给一个新任务管理 GitHub PR。"
+policy:
+  allow_implicit_invocation: false
