@@ -12,6 +12,11 @@ continuity, and stop work in the source task. The new task owns PR creation or
 adoption and a user-driven GitHub review loop. Use `gh` for GitHub reads and
 writes. Never merge, enable auto-merge, or clean up the branch.
 
+Use Chinese as the primary language for user-facing summaries, questions, and
+status. Preserve code, commands, identifiers, and quoted review text in their
+original language. Match the PR's existing language in remote GitHub replies unless
+the user requests otherwise.
+
 This skill is explicit-only. Its invocation authorizes creating the new task and
 creating or adopting the PR. It does not authorize reading review feedback before
 the user asks, changing code before the user says `修复`, or merging the PR.
