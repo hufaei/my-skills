@@ -5,7 +5,7 @@ Skill 完整副本；克隆仓库并运行安装脚本后，即可在 Codex 中�
 `jl-*` 名称。
 
 仓库是本机安装内容的唯一来源：`skills/` 可以直接维护，`synced/` 只能通过
-同步脚本从固定上游重新生成。当前包含 25 个 Skill，其中 8 个自建、17 个
+同步脚本从固定上游重新生成。当前包含 26 个 Skill，其中 8 个自建、18 个
 上游同步。
 
 ## 特点
@@ -194,6 +194,7 @@ Orchestra 调用后只进行只读检查、方案讨论和计划输出。用户�
 | `jl-humanizer` | blader `humanizer` | 保留事实与原意，去除文本中的 AI 写作痕迹 |
 | `jl-caveman` | JuliusBrussee `caveman` | 按需压缩 Codex 的对话表达 |
 | `jl-ponytail` | DietrichGebert `ponytail` | 默认寻找满足需求的最小生产实现 |
+| `jl-i-have-adhd` | ayghri `i-have-adhd` | 以行动优先、状态清晰的方式组织当前任务输出 |
 | `jl-subagent-driven-development` | Superpowers 同名 Skill | 结构化多代理实施 |
 | `jl-finishing-a-development-branch` | Superpowers 同名 Skill | 分支收尾 |
 | `jl-dispatching-parallel-agents` | Superpowers 同名 Skill | 独立任务并行分发 |
@@ -222,6 +223,7 @@ $jl-pr-steward 把当前分支交给一个新任务管理 GitHub PR
 $jl-humanizer 在保留事实和原意的前提下，让这段文字更自然：<文本>
 $jl-caveman 以 full 模式压缩本任务的交流，直到我说正常模式
 $jl-ponytail 为这个编码任务选择满足需求的最小实现
+$jl-i-have-adhd 让本任务的输出行动优先、步骤清楚，并持续到我说正常模式
 $jl-sync-skills 检查上游更新
 ```
 

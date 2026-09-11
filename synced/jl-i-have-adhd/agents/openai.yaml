@@ -1,0 +1,6 @@
+interface:
+  display_name: "JL I Have ADHD"
+  short_description: "按行动优先、状态清晰的方式组织当前任务输出，降低启动与执行阻力"
+  default_prompt: "使用 $jl-i-have-adhd 让本任务的输出行动优先、步骤清楚，并持续到我说正常模式。"
+policy:
+  allow_implicit_invocation: false
