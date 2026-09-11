@@ -14,3 +14,4 @@ licenses remain with their respective owners.
 | [blader/humanizer](https://github.com/blader/humanizer) | Copyright © 2025 Siqi Chen | [`licenses/humanizer-MIT.txt`](licenses/humanizer-MIT.txt) |
 | [JuliusBrussee/caveman](https://github.com/JuliusBrussee/caveman) | Copyright © 2026 Julius Brussee | [`licenses/caveman-MIT.txt`](licenses/caveman-MIT.txt) |
 | [DietrichGebert/ponytail](https://github.com/DietrichGebert/ponytail) | Copyright © 2026 DietrichGebert | [`licenses/ponytail-MIT.txt`](licenses/ponytail-MIT.txt) |
+| [ayghri/i-have-adhd](https://github.com/ayghri/i-have-adhd) | Copyright © 2026 Ayoub Ghriss | [`licenses/i-have-adhd-MIT.txt`](licenses/i-have-adhd-MIT.txt) |
