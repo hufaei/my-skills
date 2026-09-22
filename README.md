@@ -5,7 +5,7 @@ Skill 完整副本；克隆仓库并运行安装脚本后，即可在 Codex 中�
 `jl-*` 名称。
 
 仓库是本机安装内容的唯一来源：`skills/` 可以直接维护，`synced/` 只能通过
-同步脚本从固定上游重新生成。当前包含 26 个 Skill，其中 8 个自建、18 个
+同步脚本从固定上游重新生成。当前包含 28 个 Skill，其中 8 个自建、20 个
 上游同步。
 
 ## 特点
@@ -195,6 +195,8 @@ Orchestra 调用后只进行只读检查、方案讨论和计划输出。用户�
 | `jl-caveman` | JuliusBrussee `caveman` | 按需压缩 Codex 的对话表达 |
 | `jl-ponytail` | DietrichGebert `ponytail` | 默认寻找满足需求的最小生产实现 |
 | `jl-i-have-adhd` | ayghri `i-have-adhd` | 以行动优先、状态清晰的方式组织当前任务输出 |
+| `jl-to-questionnaire` | Matt Pocock `to-questionnaire` | 把无法独自回答的决策整理成面向知情人的问卷 |
+| `jl-wizard` | Matt Pocock `wizard` | 为只能由人完成的配置或迁移步骤生成交互式 Bash 向导 |
 | `jl-subagent-driven-development` | Superpowers 同名 Skill | 结构化多代理实施 |
 | `jl-finishing-a-development-branch` | Superpowers 同名 Skill | 分支收尾 |
 | `jl-dispatching-parallel-agents` | Superpowers 同名 Skill | 独立任务并行分发 |
@@ -224,6 +226,8 @@ $jl-humanizer 在保留事实和原意的前提下，让这段文字更自然：
 $jl-caveman 以 full 模式压缩本任务的交流，直到我说正常模式
 $jl-ponytail 为这个编码任务选择满足需求的最小实现
 $jl-i-have-adhd 让本任务的输出行动优先、步骤清楚，并持续到我说正常模式
+$jl-to-questionnaire 把这个我无法独自回答的决策整理成给知情人的问卷：<决策>
+$jl-wizard 为这些只能由人完成的配置步骤生成交互式 Bash 向导：<流程>
 $jl-sync-skills 检查上游更新
 ```
 
@@ -287,5 +291,7 @@ python3 scripts/sync_skills.py apply jl-brainstorming
 - [blader/humanizer](https://github.com/blader/humanizer)
 - [JuliusBrussee/caveman](https://github.com/JuliusBrussee/caveman)
 - [DietrichGebert/ponytail](https://github.com/DietrichGebert/ponytail)
+- [ayghri/i-have-adhd](https://github.com/ayghri/i-have-adhd)
+- [mattpocock/skills](https://github.com/mattpocock/skills)
 
 许可证和归属说明见 [`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md)。

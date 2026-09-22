@@ -381,6 +381,59 @@
       ]
     },
     {
+      "name": "jl-to-questionnaire",
+      "kind": "synced",
+      "role": "primary",
+      "repo": "https://github.com/mattpocock/skills.git",
+      "ref": "HEAD",
+      "source_name": "to-questionnaire",
+      "source_path": "skills/productivity/to-questionnaire",
+      "include_paths": [
+        "SKILL.md"
+      ],
+      "destination": "synced/jl-to-questionnaire",
+      "commit": "c55ee46073ed923f86ce59a5eb3b6d895095d1b7",
+      "content_sha256": "6c1ccd4e9d6c353ed3f0431071f0ce0438240f80971c97a1ed74bc29b09e0abd",
+      "license": "MIT",
+      "display_name": "JL To Questionnaire",
+      "short_description": "把无法独自回答的决策整理成面向知情人的结构化问卷文档",
+      "default_prompt": "使用 $jl-to-questionnaire 把这个我无法独自回答的决策整理成给知情人的问卷：<决策>",
+      "allow_implicit_invocation": false,
+      "replacements": [
+        [
+          "disable-model-invocation: true\n",
+          ""
+        ]
+      ]
+    },
+    {
+      "name": "jl-wizard",
+      "kind": "synced",
+      "role": "primary",
+      "repo": "https://github.com/mattpocock/skills.git",
+      "ref": "HEAD",
+      "source_name": "wizard",
+      "source_path": "skills/engineering/wizard",
+      "include_paths": [
+        "SKILL.md",
+        "template.sh"
+      ],
+      "destination": "synced/jl-wizard",
+      "commit": "c55ee46073ed923f86ce59a5eb3b6d895095d1b7",
+      "content_sha256": "f1f923bd2cae5cb8a28dafd68a89197167d56b90dfe6f7d0364948d4ab435ce8",
+      "license": "MIT",
+      "display_name": "JL Wizard",
+      "short_description": "为只能由人完成的配置、密钥或迁移步骤生成交互式 Bash 向导",
+      "default_prompt": "使用 $jl-wizard 为这些只能由人完成的配置步骤生成交互式 Bash 向导：<流程>",
+      "allow_implicit_invocation": false,
+      "replacements": [
+        [
+          "/wizard skill",
+          "$jl-wizard skill"
+        ]
+      ]
+    },
+    {
       "name": "jl-subagent-driven-development",
       "kind": "synced",
       "role": "dependency",
