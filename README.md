@@ -5,7 +5,7 @@ Skill 完整副本；克隆仓库并运行安装脚本后，即可在 Codex 中�
 `jl-*` 名称。
 
 仓库是本机安装内容的唯一来源：`skills/` 可以直接维护，`synced/` 只能通过
-同步脚本从固定上游重新生成。当前包含 28 个 Skill，其中 8 个自建、20 个
+同步脚本从固定上游重新生成。当前包含 29 个 Skill，其中 9 个自建、20 个
 上游同步。
 
 ## 特点
@@ -128,7 +128,7 @@ Orchestra 调用后只进行只读检查、方案讨论和计划输出。用户�
 `执行` 后才会修改仓库、创建分支或 Worktree、安装依赖、分配实施代理或执行
 发布操作；`可以`、`继续` 或对方案表示认可不会越过执行门禁。
 
-以下 6 个 Skill 允许根据明确的自然语言请求自动调用：
+以下 7 个 Skill 允许根据明确的自然语言请求自动调用：
 
 - `jl-clean-branches`：清理已合并分支或 Worktree。
 - `jl-sync-skills`：检查或同步 Skill 上游更新。
@@ -136,6 +136,7 @@ Orchestra 调用后只进行只读检查、方案讨论和计划输出。用户�
 - `jl-test-philosophy`：明确要求设计、编写、精简或审查测试与测试策略。
 - `jl-prompt-architect`：明确进行 Prompt Engineering，或编写、审查供 AI
   模型、Agent、工具或 Runtime 使用的提示词。
+- `jl-wait-what`：明确表示上一条回复没讲明白，要求补充上下文并换种说法。
 - `jl-ponytail`：编码任务默认寻找能完整满足需求的最小实现；非编码任务不调用。
 
 完整 Orchestra、ChatGPT Pro 协作流，以及除 `jl-ponytail` 外的所有
@@ -172,6 +173,7 @@ Orchestra 调用后只进行只读检查、方案讨论和计划输出。用户�
 | `jl-doc-steward` | 创建、同步、审查核心工程文档和 Agent 指令文档 |
 | `jl-prompt-architect` | 设计、撰写和审查可直接使用的分层 AI 提示词与 Runtime 契约 |
 | `jl-pr-steward` | 把当前分支交给新任务，并按用户指令处理 GitHub PR Review |
+| `jl-wait-what` | 上一条回复没有讲明白时，用中文补足上下文并重新解释 |
 
 ## 上游同步 Skill
 
@@ -222,6 +224,7 @@ $jl-clean-ddd-hexagonal 设计或审查复杂业务后端的架构边界
 $jl-doc-steward 同步这次代码改动影响的项目文档
 $jl-prompt-architect 为这个 Agent 设计 system、tool 和 recovery 提示词
 $jl-pr-steward 把当前分支交给一个新任务管理 GitHub PR
+$jl-wait-what 用中文重新解释你刚才的回复，补足我缺失的上下文
 $jl-humanizer 在保留事实和原意的前提下，让这段文字更自然：<文本>
 $jl-caveman 以 full 模式压缩本任务的交流，直到我说正常模式
 $jl-ponytail 为这个编码任务选择满足需求的最小实现
@@ -250,6 +253,10 @@ $jl-sync-skills 检查上游更新
 `jl-doc-steward` 管理 README、ADR、API、架构、设计/RFC、CHANGELOG、
 CONTRIBUTING/DEVELOPMENT、AGENTS.md 和 CLAUDE.md。README 和 ADR 分别复用
 仓库内固定版本的专用 Skill，其余文档按实际代码和配置取证后更新。
+
+`jl-wait-what` 可以根据“没懂”“讲简单点”“现在到哪了”等明确反馈自动调用，
+也可以显式调用。它只重新解释上一条回复，单次生效，不会推进任务、执行操作，
+也不会持续改变后续回复风格。
 
 ## 仓库结构
 

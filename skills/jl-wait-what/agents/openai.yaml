@@ -1,0 +1,6 @@
+interface:
+  display_name: "JL Wait, What"
+  short_description: "上一条回复没有讲明白时，用清晰中文补足上下文、当前状态和下一步"
+  default_prompt: "使用 $jl-wait-what 用中文重新解释你刚才的回复，补足我缺失的上下文并说明下一步。"
+policy:
+  allow_implicit_invocation: true
