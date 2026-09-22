@@ -1,0 +1,6 @@
+interface:
+  display_name: "JL To Questionnaire"
+  short_description: "把无法独自回答的决策整理成面向知情人的结构化问卷文档"
+  default_prompt: "使用 $jl-to-questionnaire 把这个我无法独自回答的决策整理成给知情人的问卷：<决策>"
+policy:
+  allow_implicit_invocation: false

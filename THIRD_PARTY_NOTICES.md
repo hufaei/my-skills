@@ -15,3 +15,4 @@ licenses remain with their respective owners.
 | [JuliusBrussee/caveman](https://github.com/JuliusBrussee/caveman) | Copyright © 2026 Julius Brussee | [`licenses/caveman-MIT.txt`](licenses/caveman-MIT.txt) |
 | [DietrichGebert/ponytail](https://github.com/DietrichGebert/ponytail) | Copyright © 2026 DietrichGebert | [`licenses/ponytail-MIT.txt`](licenses/ponytail-MIT.txt) |
 | [ayghri/i-have-adhd](https://github.com/ayghri/i-have-adhd) | Copyright © 2026 Ayoub Ghriss | [`licenses/i-have-adhd-MIT.txt`](licenses/i-have-adhd-MIT.txt) |
+| [mattpocock/skills](https://github.com/mattpocock/skills) | Copyright © 2026 Matt Pocock | [`licenses/mattpocock-skills-MIT.txt`](licenses/mattpocock-skills-MIT.txt) |

@@ -1,0 +1,6 @@
+interface:
+  display_name: "JL Wizard"
+  short_description: "为只能由人完成的配置、密钥或迁移步骤生成交互式 Bash 向导"
+  default_prompt: "使用 $jl-wizard 为这些只能由人完成的配置步骤生成交互式 Bash 向导：<流程>"
+policy:
+  allow_implicit_invocation: false
