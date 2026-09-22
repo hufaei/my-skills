@@ -44,6 +44,11 @@
       "destination": "skills/jl-prompt-architect"
     },
     {
+      "name": "jl-wait-what",
+      "kind": "owned",
+      "destination": "skills/jl-wait-what"
+    },
+    {
       "name": "jl-brainstorming",
       "kind": "synced",
       "role": "primary",
