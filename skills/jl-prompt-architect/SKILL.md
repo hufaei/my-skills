@@ -7,12 +7,29 @@ description: Use when the user is explicitly designing, writing, revising, debug
 
 ## Contract
 
-Design prompts as executable interfaces, not decorated prose. Make the intended
-outcome, decision path, evidence, authority, runtime, output, and recovery behavior
-legible. Spend structure only where behavior can diverge.
+Design prompts as executable interfaces. Language is part of the interface: it
+directs attention, establishes a relationship, and changes how decisions unfold.
+Make the intended outcome, decision path, evidence, authority, runtime, output,
+and recovery behavior legible. Spend structure where behavior can diverge.
 
 Return a prompt the user can actually place in its target layer. Do not mistake a
 long prompt for a complete prompt or compressed jargon for precision.
+
+## Choose the operation
+
+- **Draft:** build for the actual task, reader, and execution surface. Use a small
+  purpose prompt when it suffices; choose a complete agent template when the
+  relationship, decisions, and tool workflow need to work together.
+- **Adapt an exemplar:** choose a source by its work surface, stage, interaction
+  pattern, and failure modes. A model name alone is not a selection criterion.
+  Learn how the original wording and sequence produce behavior before adapting it.
+- **Revise locally:** establish what must stay invariant, then change the smallest
+  relevant passage. Preserve language, voice, obligation strength, exceptions,
+  schemas, and authority unless the user requests a behavioral change. Distinguish
+  expression-only changes from changes to observable decisions or effects.
+
+Review can accompany any operation. Use the relevant lenses rather than treating
+every review as a full runtime audit.
 
 ## Establish the boundary
 
@@ -59,10 +76,17 @@ high-priority style instructions do not create facts.
 Do not inflate a clear one-shot prompt into an agent runtime. Do not compress a
 stateful, tool-using agent into a role sentence plus a list of adjectives.
 
-For agent/system/runtime prompts, tool contracts, prompt hierarchy, state recovery,
-or a formal prompt review, read
-[prompt-architecture.md](references/prompt-architecture.md). Skip it when the
-one-shot shape above already resolves the task.
+Read references according to the decision being made:
+
+- For learning from source templates, choosing wording or voice, adapting a whole
+  agent prompt, or a nuanced local revision, read the relevant sections of
+  [prompt-language-and-examples.md](references/prompt-language-and-examples.md).
+- For agent/runtime composition, tools, prompt hierarchy, state recovery, or a
+  review of those contracts, read
+  [prompt-architecture.md](references/prompt-architecture.md).
+
+A tool-using agent adaptation may need both. A short self-contained task or simple
+wording fix can use the guidance here without loading either reference.
 
 ## Compose in three passes
 
@@ -90,27 +114,40 @@ concrete completion test over “provide the best answer.”
 
 Make the language carry behavior:
 
-- Use concrete nouns and active verbs. Replace vague qualities with observable
-  criteria.
+- Read a useful exemplar as a sequence: what does each sentence make the model
+  attend to, why does it come here, and which misreading does an example resolve?
+  Transfer that mechanism into the target task; retain useful original phrasing
+  when it performs the same function in the target.
+- Use concrete nouns and active verbs for actions and boundaries. Replace empty
+  qualities with observable criteria; retain a useful image, cadence, or role
+  framing when it steers the intended work.
+- Establish the audience and relationship before choosing tone. Preserve the
+  existing deployment language unless change is requested or the target contract
+  requires it; English and a colleague voice are not universal defaults.
 - Order instructions by decision time. Put prerequisites before actions and
   exceptions beside the rule they qualify.
 - Use a positive default to establish the normal path; reserve `never`, `must`, and
   `do not` for hard boundaries.
 - Compress repeated meaning, not distinct decisions. Expand only where ambiguity is
   expensive.
-- Keep examples few and contrastive. Use them to resolve a fragile boundary, not to
-  restate the rule.
-- Match the target model's language, markup, and tool-call contract. Do not add
-  decorative headings or ceremonial roles.
+- Keep examples few and purposeful. A contrast can clarify a fragile boundary; a
+  complete worked example can teach voice, sequence, and density. Let explicit
+  requirements govern when incidental example details conflict with them.
+- Match the target surface's language, markup, and tool-call contract. Select a
+  coherent clarification default and place its exceptions nearby; do not combine
+  contradictory defaults from different source templates.
 - Treat prose, tables, visuals, artifacts, and response components as presentation.
   They may expose evidence, but cannot manufacture facts or broaden permission.
 
-Let rhythm reveal hierarchy: rule, reason when non-obvious, then the smallest
-example that disambiguates it.
+Let rhythm reveal hierarchy: a default, a reason when useful, and an example where
+it changes interpretation. This is a useful pattern, not a required paragraph form.
+For local revisions, check actor, trigger, scope, obligation, exception, and result
+before claiming that meaning is unchanged.
 
 ### 3. Runtime and state
 
-Keep stable behavior separate from injected state:
+For tool-using or stateful prompts, keep stable behavior separate from injected
+state. Skip runtime machinery when the target task does not need it:
 
 - Treat current time, environment, memory, project instructions, tool registries,
   and user context as runtime inputs, not timeless identity.
@@ -148,7 +185,11 @@ Check that:
 - every tool, memory, and context source has a distinct authority;
 - output requirements can be verified without guessing hidden reasoning;
 - simple inputs remain simple, edge inputs take the intended branch, and interrupted
-  work resumes from the correct state.
+  work resumes from the correct state;
+- examples generalize to a new input without importing their facts, product
+  capabilities, or incidental style as requirements;
+- an expression-only revision preserves the original decision boundaries and
+  output contract, while an intended behavior change is identified.
 
 For a reusable or high-impact prompt, exercise representative normal, boundary,
 conflict, and recovery cases. Evaluate observable decisions and outputs. Do not ask
@@ -161,5 +202,10 @@ deployment depends on them, state the architecture choice, unresolved placeholde
 and material trade-offs the user needs to deploy or revise it. When revising an
 existing prompt, explain the behavioral change rather than narrating every wording
 edit.
+
+When source adaptation matters, identify the source and distinguish faithful
+parameterization, behavioral adaptation, and an independently written template.
+Explain the borrowed expression mechanism only when it helps the user apply or
+review the result. Do not present an adapted template as a verbatim original.
 
 If the user asks for “just the prompt,” provide just the deployable prompt.
