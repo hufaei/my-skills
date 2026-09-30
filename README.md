@@ -5,7 +5,7 @@ Skill 完整副本；克隆仓库并运行安装脚本后，即可在 Codex 中�
 `jl-*` 名称。
 
 仓库是本机安装内容的唯一来源：`skills/` 可以直接维护，`synced/` 只能通过
-同步脚本从固定上游重新生成。当前包含 29 个 Skill，其中 9 个自建、20 个
+同步脚本从固定上游重新生成。当前包含 42 个 Skill，其中 9 个自建、33 个
 上游同步。
 
 ## 特点
@@ -139,8 +139,16 @@ Orchestra 调用后只进行只读检查、方案讨论和计划输出。用户�
 - `jl-wait-what`：明确表示上一条回复没讲明白，要求补充上下文并换种说法。
 - `jl-ponytail`：编码任务默认寻找能完整满足需求的最小实现；非编码任务不调用。
 
-完整 Orchestra、ChatGPT Pro 协作流，以及除 `jl-ponytail` 外的所有
-`synced/` 工作流组件仍要求显式 `$jl-*` 调用，避免普通任务自动进入重流程。
+Emil Kowalski 设计工程组的 13 个同步 Skill 也允许自动判断：
+`jl-animate`、`jl-animate-expo`、`jl-animation-vocabulary`、
+`jl-apple-design`、`jl-ask-sonner`、`jl-emil-design-eng`、
+`jl-find-animation-opportunities`、`jl-improve-animations`、
+`jl-mobile-native`、`jl-pick-ui-library`、`jl-prototype`、
+`jl-review-animations` 和 `jl-write-swift`。它们按实现、审查、审计、机会发现、
+平台和专项技术的描述边界选择，不需要先显式输入 `$jl-*`。
+
+完整 Orchestra、ChatGPT Pro 协作流，以及其他 `synced/` 工作流组件仍要求显式
+`$jl-*` 调用，避免普通任务自动进入重流程。
 
 在完整工作流中：
 
@@ -178,7 +186,8 @@ Orchestra 调用后只进行只读检查、方案讨论和计划输出。用户�
 ## 上游同步 Skill
 
 这些目录是完整上游 Skill 的生成副本。同步过程只执行清单声明的机械转换：
-添加 `jl-` 前缀、改写已纳入仓库的 Skill 依赖，并生成 Codex UI 元数据。
+添加 `jl-` 前缀、按每个 Skill 声明的依赖改写交叉引用，并根据自动调用策略
+生成 Codex UI 元数据和兼容的 Skill 前置配置。
 
 | 本地 Skill | 上游 | 角色 |
 | --- | --- | --- |
@@ -202,6 +211,19 @@ Orchestra 调用后只进行只读检查、方案讨论和计划输出。用户�
 | `jl-subagent-driven-development` | Superpowers 同名 Skill | 结构化多代理实施 |
 | `jl-finishing-a-development-branch` | Superpowers 同名 Skill | 分支收尾 |
 | `jl-dispatching-parallel-agents` | Superpowers 同名 Skill | 独立任务并行分发 |
+| `jl-animate` | Emil Kowalski `animate` | Web 动画决策与实现 |
+| `jl-animate-expo` | Emil Kowalski `animate-expo` | React Native 与 Expo 动画、手势和触觉反馈 |
+| `jl-animation-vocabulary` | Emil Kowalski `animation-vocabulary` | 动效术语反向查询 |
+| `jl-apple-design` | Emil Kowalski `apple-design` | Apple 风格的流体交互和界面设计 |
+| `jl-ask-sonner` | Emil Kowalski `ask-sonner` | Sonner 安装、使用与故障排查 |
+| `jl-emil-design-eng` | Emil Kowalski `emil-design-eng` | UI、组件、动画和细节打磨 |
+| `jl-find-animation-opportunities` | Emil Kowalski `find-animation-opportunities` | 只读发现值得增加的动画 |
+| `jl-improve-animations` | Emil Kowalski `improve-animations` | 全项目动画审计与实施计划 |
+| `jl-mobile-native` | Emil Kowalski `mobile-native` | 移动 Web 原生感修复 |
+| `jl-pick-ui-library` | Emil Kowalski `pick-ui-library` | 前端 UI 库选择 |
+| `jl-prototype` | Emil Kowalski `prototype` | 多方案 UI 原型与可视选择 |
+| `jl-review-animations` | Emil Kowalski `review-animations` | 严格动画代码审查 |
+| `jl-write-swift` | Emil Kowalski `write-swift` | 现代 Swift 编写、审查与迁移 |
 
 不要直接修改 `synced/`。需要长期定制时，新建自建 Skill；需要跟进上游时，
 使用 `jl-sync-skills` 和同步脚本。

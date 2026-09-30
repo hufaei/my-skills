@@ -1,0 +1,6 @@
+interface:
+  display_name: "JL Prototype"
+  short_description: "构建多个真正不同的 UI 方案，并通过可视选择器挑选最终方向"
+  default_prompt: "使用 $jl-prototype 为这个 UI 需求制作多个可切换方案：<需求>"
+policy:
+  allow_implicit_invocation: true

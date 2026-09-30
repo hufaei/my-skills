@@ -1,0 +1,6 @@
+interface:
+  display_name: "JL Ask Sonner"
+  short_description: "安装、使用、定制并排查 Sonner toast 的常见问题"
+  default_prompt: "使用 $jl-ask-sonner 帮我处理这个 Sonner 问题：<问题>"
+policy:
+  allow_implicit_invocation: true

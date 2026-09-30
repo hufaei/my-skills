@@ -1,0 +1,6 @@
+interface:
+  display_name: "JL Apple Design"
+  short_description: "用 Apple 的流体交互、手势、弹簧、材质与排版原则设计 Web 界面"
+  default_prompt: "使用 $jl-apple-design 设计或审查这个 Apple 风格的交互：<需求>"
+policy:
+  allow_implicit_invocation: true

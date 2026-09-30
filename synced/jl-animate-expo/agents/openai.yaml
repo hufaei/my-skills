@@ -1,0 +1,6 @@
+interface:
+  display_name: "JL Animate Expo"
+  short_description: "为 React Native 与 Expo 实现流畅、可中断且运行在线程正确位置的动画"
+  default_prompt: "使用 $jl-animate-expo 为这个 Expo 界面实现动画或手势：<需求>"
+policy:
+  allow_implicit_invocation: true
