@@ -1,0 +1,6 @@
+interface:
+  display_name: "JL Pick UI Library"
+  short_description: "根据前端任务和现有依赖选择一项可信且合适的 UI 库"
+  default_prompt: "使用 $jl-pick-ui-library 为这个前端需求选择合适的库：<需求>"
+policy:
+  allow_implicit_invocation: true

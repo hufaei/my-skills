@@ -1,0 +1,6 @@
+interface:
+  display_name: "JL Animation Vocabulary"
+  short_description: "把模糊的动画效果描述映射为准确的动效术语"
+  default_prompt: "使用 $jl-animation-vocabulary 告诉我这个动画效果的准确名称：<描述>"
+policy:
+  allow_implicit_invocation: true

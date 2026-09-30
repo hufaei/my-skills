@@ -1,0 +1,6 @@
+interface:
+  display_name: "JL Emil Design Engineering"
+  short_description: "按 Emil Kowalski 的设计工程方法打磨 UI、组件、动画和隐性细节"
+  default_prompt: "使用 $jl-emil-design-eng 设计或打磨这个界面：<需求>"
+policy:
+  allow_implicit_invocation: true

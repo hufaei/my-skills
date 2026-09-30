@@ -1,0 +1,6 @@
+interface:
+  display_name: "JL Improve Animations"
+  short_description: "只读审计整个代码库的动效，并产出可独立执行的优先级计划"
+  default_prompt: "使用 $jl-improve-animations 审计这个项目的动画并给出实施计划：<范围>"
+policy:
+  allow_implicit_invocation: true

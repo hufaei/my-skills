@@ -1,0 +1,6 @@
+interface:
+  display_name: "JL Animate"
+  short_description: "判断动画是否必要，并以合适的工具、曲线和时长实现 Web 动效"
+  default_prompt: "使用 $jl-animate 为这个界面设计并实现合适的动画：<需求>"
+policy:
+  allow_implicit_invocation: true

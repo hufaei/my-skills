@@ -1,0 +1,6 @@
+interface:
+  display_name: "JL Write Swift"
+  short_description: "使用现代 Swift 的值类型、并发、泛型、性能与测试实践编写和审查代码"
+  default_prompt: "使用 $jl-write-swift 编写、审查或迁移这段 Swift：<需求>"
+policy:
+  allow_implicit_invocation: true

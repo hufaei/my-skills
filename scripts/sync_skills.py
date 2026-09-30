@@ -125,11 +125,25 @@ def transform_text(text: str, entry: dict[str, Any], source_names: list[str]) ->
             text,
             count=1,
         )
+        if entry.get("allow_implicit_invocation", False):
+            text = re.sub(
+                r"(?m)^disable-model-invocation:\s*true\s*\n?",
+                "",
+                text,
+            )
 
     for old, new in entry.get("replacements", []):
         text = text.replace(old, new)
 
-    for dependency in source_names:
+    dependency_names = entry.get("dependency_names", source_names)
+    unknown_dependencies = set(dependency_names) - set(source_names)
+    if unknown_dependencies:
+        raise RuntimeError(
+            f"Unknown dependency names for {entry['name']}: "
+            f"{', '.join(sorted(unknown_dependencies))}"
+        )
+
+    for dependency in dependency_names:
         local = f"jl-{dependency}"
         text = text.replace(f"superpowers:{dependency}", local)
         text = text.replace(f"../{dependency}/", f"../{local}/")

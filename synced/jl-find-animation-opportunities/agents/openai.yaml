@@ -1,0 +1,6 @@
+interface:
+  display_name: "JL Find Animation Opportunities"
+  short_description: "只读查找真正值得增加动效的位置，并拒绝不该动画化的候选"
+  default_prompt: "使用 $jl-find-animation-opportunities 检查这个界面有哪些值得增加的动画：<范围>"
+policy:
+  allow_implicit_invocation: true
