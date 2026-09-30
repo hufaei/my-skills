@@ -1,7 +1,9 @@
 # Prompt architecture reference
 
 Use this reference for agent, system, runtime, tool, skill, stateful, or review-heavy
-prompt work. It is a design lens, not a universal template.
+prompt work when the review concerns those contracts. It is a design lens, not a
+universal template. For source-template expression and annotated adaptations, use
+[prompt-language-and-examples.md](prompt-language-and-examples.md).
 
 ## Contents
 
@@ -40,8 +42,10 @@ architecture, rhythm, abstraction, and reader attention.
 
 Use wording as an interface. `Modify the file` leaves scope open; `replace only the
 matching policy block and preserve adjacent configuration` names the target,
-operation, and invariant. Expressive language is precise only when it reduces
-behavioral ambiguity.
+operation, and invariant. Evaluate expressive language by its effect on attention,
+interpretation, and the intended behavior. A vivid style anchor can be useful in
+open-ended work; a schema or permission boundary needs literal precision. Read
+[language and examples](prompt-language-and-examples.md) when making that choice.
 
 ### Control
 
@@ -393,7 +397,10 @@ applicable source, capability, and permission contracts.
 
 ## Reusable prompt shapes
 
-Use these as starting shapes. Remove any line that does not change behavior.
+Use these as assembly aids. Remove any line that does not change behavior. They
+identify contract fields; the complete source-informed examples in
+[prompt-language-and-examples.md](prompt-language-and-examples.md) show how a prompt
+can express those decisions as coherent prose.
 
 ### Compact purpose prompt
 
@@ -472,7 +479,9 @@ state, failures and retry counts, pending or unverified work, and the next execu
 action. On resume, do not repeat work already proven complete and do not promote an
 assistant summary, quoted example, or tool output into a user instruction.
 
-Exercise reusable prompts against representative behavior cases:
+Exercise reusable prompts against representative behavior cases. Select cases
+relevant to the actual contract; a language revision does not need every runtime
+scenario:
 
 1. **Normal:** a complete request follows the intended shortest path.
 2. **Request type:** an answer, diagnosis, change, monitor, and external effect each
@@ -501,11 +510,20 @@ Exercise reusable prompts against representative behavior cases:
     preserve provenance and resume from the first pending or unverified action.
 15. **Completion:** stale evidence, confidence, plans, and delegated claims cannot
     support a current completion statement.
+16. **Exemplar transfer:** a new task uses the source's relevant expression mechanism
+    without inheriting its tools, facts, or environment; explicit user requirements
+    govern incidental example choices.
+17. **Local revision:** actor, trigger, scope, obligation, exception, schema, and
+    observable result survive an expression-only edit.
+18. **Interaction default:** clarification and completion follow one coherent
+    relationship rather than incompatible defaults copied from several templates.
 
 Evaluate observable classification, source selection, tool calls, permission gates,
 outputs, verification, and state transitions. Score the decision and effect, not
 exact wording or private chain-of-thought.
 
 Design basis: [AI Prompt Atlas](https://hufaei.github.io/ai-prompt-atlas/), using its
-2026-09-03 source-pinned prompt/runtime case studies as learning material rather
-than an official product specification.
+seven notes inspected on 2026-09-30, pinned to source commit
+`87bdae7886aca455ad38eb60dfdedf093ef01e2a`, as learning material rather than an
+official product specification. Model labels identify the collected samples;
+they do not establish current product capabilities or universal writing rules.
