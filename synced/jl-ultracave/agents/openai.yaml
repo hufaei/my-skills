@@ -1,0 +1,6 @@
+interface:
+  display_name: "JL Ultracave"
+  short_description: "以最大压缩强度组织对话，保留技术内容、否定词与清晰的操作顺序"
+  default_prompt: "使用 $jl-ultracave 以最大压缩强度表达本任务的回复，保留技术内容，直到我说正常模式。"
+policy:
+  allow_implicit_invocation: false

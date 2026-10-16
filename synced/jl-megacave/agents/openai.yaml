@@ -1,0 +1,6 @@
+interface:
+  display_name: "JL Megacave"
+  short_description: "使用文言文压缩对话表达，原样保留代码、命令、数字和错误信息"
+  default_prompt: "使用 $jl-megacave 以文言文压缩本任务的回复，原样保留技术标识，直到我说正常模式。"
+policy:
+  allow_implicit_invocation: false

@@ -119,17 +119,37 @@ def render_openai_yaml(entry: dict[str, Any]) -> str:
 def transform_text(text: str, entry: dict[str, Any], source_names: list[str]) -> str:
     source_name = entry["source_name"]
     if entry.get("is_skill_file"):
-        text = re.sub(
-            rf"(?m)^name:\s*['\"]?{re.escape(source_name)}['\"]?\s*$",
-            f"name: {entry['name']}",
+        frontmatter = re.match(
+            r"\A(---[ \t]*\r?\n)(.*?)(^---[ \t]*(?:\r?\n|\Z))",
             text,
-            count=1,
+            flags=re.MULTILINE | re.DOTALL,
         )
-        if entry.get("allow_implicit_invocation", False):
-            text = re.sub(
-                r"(?m)^disable-model-invocation:\s*true\s*\n?",
-                "",
-                text,
+        if frontmatter:
+            lines = []
+            removing_field = False
+            for line in frontmatter[2].splitlines(keepends=True):
+                if re.match(
+                    r"^(['\"]?)(?:argument-hint|disable-model-invocation)\1[ \t]*:",
+                    line,
+                ):
+                    removing_field = True
+                    continue
+                # Drop continuation lines too, including block scalar values.
+                if removing_field and (not line.strip() or line[0].isspace()):
+                    continue
+                if not line.startswith("#"):
+                    removing_field = False
+                line = re.sub(
+                    rf"^((?:name|'name'|\"name\")[ \t]*:[ \t]*)"
+                    rf"(?:{re.escape(source_name)}|'{re.escape(source_name)}'|"
+                    rf'"{re.escape(source_name)}")([ \t]*(?:#[^\r\n]*)?)(\r?\n)?$',
+                    rf"\g<1>{entry['name']}\g<2>\g<3>",
+                    line,
+                )
+                lines.append(line)
+            text = (
+                frontmatter[1] + "".join(lines) + frontmatter[3]
+                + text[frontmatter.end():]
             )
 
     for old, new in entry.get("replacements", []):
