@@ -5,7 +5,7 @@ Skill 完整副本；克隆仓库并运行安装脚本后，即可在 Codex 中�
 `jl-*` 名称。
 
 仓库是本机安装内容的唯一来源：`skills/` 可以直接维护，`synced/` 只能通过
-同步脚本从固定上游重新生成。当前包含 42 个 Skill，其中 9 个自建、33 个
+同步脚本从固定上游重新生成。当前包含 44 个 Skill，其中 9 个自建、35 个
 上游同步。
 
 ## 特点
@@ -204,6 +204,8 @@ Emil Kowalski 设计工程组的 13 个同步 Skill 也允许自动判断：
 | `jl-clean-ddd-hexagonal` | robust-skills `clean-ddd-hexagonal` | DDD、整洁架构与六边形架构 |
 | `jl-humanizer` | blader `humanizer` | 保留事实与原意，去除文本中的 AI 写作痕迹 |
 | `jl-caveman` | JuliusBrussee `caveman` | 按需压缩 Codex 的对话表达 |
+| `jl-ultracave` | JuliusBrussee `ultracave` | Caveman 最大压缩模式，保留技术内容和否定词 |
+| `jl-megacave` | JuliusBrussee `megacave` | 文言文对话模式，原样保留技术标识 |
 | `jl-ponytail` | DietrichGebert `ponytail` | 默认寻找满足需求的最小生产实现 |
 | `jl-i-have-adhd` | ayghri `i-have-adhd` | 以行动优先、状态清晰的方式组织当前任务输出 |
 | `jl-to-questionnaire` | Matt Pocock `to-questionnaire` | 把无法独自回答的决策整理成面向知情人的问卷 |
@@ -248,7 +250,9 @@ $jl-prompt-architect 为这个 Agent 设计 system、tool 和 recovery 提示词
 $jl-pr-steward 把当前分支交给一个新任务管理 GitHub PR
 $jl-wait-what 用中文重新解释你刚才的回复，补足我缺失的上下文
 $jl-humanizer 在保留事实和原意的前提下，让这段文字更自然：<文本>
-$jl-caveman 以 full 模式压缩本任务的交流，直到我说正常模式
+$jl-caveman 压缩本任务的交流，直到我说正常模式
+$jl-ultracave 以最大压缩强度回复，保留技术内容
+$jl-megacave 以文言文回复，原样保留技术标识
 $jl-ponytail 为这个编码任务选择满足需求的最小实现
 $jl-i-have-adhd 让本任务的输出行动优先、步骤清楚，并持续到我说正常模式
 $jl-to-questionnaire 把这个我无法独自回答的决策整理成给知情人的问卷：<决策>
@@ -268,9 +272,22 @@ $jl-sync-skills 检查上游更新
 信息。它默认手动调用，并在当前任务中持续生效，直到用户说“正常模式”或选择
 关闭；安全警告、不可逆操作确认和容易歧义的步骤会恢复完整表达。
 
+三个表达 Skill 都要求手动调用。`$jl-caveman ultra` 转交 `jl-ultracave`，
+`$jl-caveman wenyan` 转交 `jl-megacave`，也可以直接调用对应 Skill。旧版
+`lite/full` 的普通表达用 `$jl-caveman`，旧版 `wenyan-*` 用 `$jl-megacave`；
+当前包提供这三种表达方式，没有安装上游 CLI 的旧参数解析或状态 hooks。
+文言文主要减少屏幕上的字符数量，不承诺减少模型 token 用量。
+
+`$jl-caveman status` 只报告此前的会话模式，不激活或切换模式。没有上游
+hook 时，状态会附带 `(not tracked by this host)`，不会把配置默认值当成
+当前状态。说 `stop caveman` 或“正常模式”即可停止。
+
 `jl-ponytail` 允许在编码任务中自动调用，默认使用 full 强度。它先理解需求和
 真实调用链，再按现有实现、标准库、平台能力、已有依赖和最小新增代码的顺序
 选择方案；说“stop ponytail”可以在当前任务关闭。它不适用于普通写作或问答。
+新版强调沿用项目已有组件和结构，补齐受影响的调用方、测试与配置；ultra
+模式会在构建前质疑缺乏需求依据的部分。Orchestra 中仍由 `jl-test-philosophy`
+决定测试范围，已确认的交付范围与边界保持有效。
 
 `jl-doc-steward` 管理 README、ADR、API、架构、设计/RFC、CHANGELOG、
 CONTRIBUTING/DEVELOPMENT、AGENTS.md 和 CLAUDE.md。README 和 ADR 分别复用

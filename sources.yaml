@@ -307,16 +307,116 @@
         "SKILL.md"
       ],
       "destination": "synced/jl-caveman",
-      "commit": "2fd153c67988e980fb0b2455c90832159a6a5a25",
-      "content_sha256": "2ed15a5dde4e61bf53c0a59da9f1547f4b3d743da67924a9a334b08772f047f2",
-      "license": "MIT",
+      "commit": "d262ab3882952a59312ff3537cd86d894523c5ab",
+      "content_sha256": "767fdc551b0fd1177486385e7af7334670403ec178a68cc4eec212fb965c7435",
+      "license": "Apache-2.0",
       "display_name": "JL Caveman",
       "short_description": "按需压缩对话表达，保留代码、命令和技术信息",
-      "default_prompt": "使用 $jl-caveman 以 full 模式压缩本任务的交流，直到我说正常模式。",
+      "default_prompt": "使用 $jl-caveman 压缩本任务的对话表达，保留技术信息，直到我说正常模式。",
       "replacements": [
         [
-          "/caveman-compress exempt",
-          "explicit requests to compress persisted text exempt"
+          "`/caveman-compress`",
+          "explicit requests to compress persisted text"
+        ],
+        [
+          "/ultracave",
+          "$jl-ultracave"
+        ],
+        [
+          "/megacave",
+          "$jl-megacave"
+        ],
+        [
+          "/caveman",
+          "$jl-caveman"
+        ]
+      ],
+      "allow_implicit_invocation": false,
+      "dependency_names": [
+        "caveman",
+        "ultracave",
+        "megacave"
+      ]
+    },
+    {
+      "name": "jl-ultracave",
+      "kind": "synced",
+      "role": "dependency",
+      "repo": "https://github.com/JuliusBrussee/caveman.git",
+      "ref": "HEAD",
+      "source_name": "ultracave",
+      "source_path": "skills/ultracave",
+      "include_paths": [
+        "SKILL.md"
+      ],
+      "destination": "synced/jl-ultracave",
+      "commit": "d262ab3882952a59312ff3537cd86d894523c5ab",
+      "content_sha256": "ed1d7c083d621b5adaee4424dcdf226374a27c655f5921bea9ca22bd294a30c5",
+      "license": "Apache-2.0",
+      "display_name": "JL Ultracave",
+      "short_description": "以最大压缩强度组织对话，保留技术内容、否定词与清晰的操作顺序",
+      "default_prompt": "使用 $jl-ultracave 以最大压缩强度表达本任务的回复，保留技术内容，直到我说正常模式。",
+      "allow_implicit_invocation": false,
+      "dependency_names": [
+        "caveman",
+        "ultracave",
+        "megacave"
+      ],
+      "replacements": [
+        [
+          "`/caveman-compress`",
+          "explicit requests to compress persisted text"
+        ],
+        [
+          "/ultracave",
+          "$jl-ultracave"
+        ],
+        [
+          "/megacave",
+          "$jl-megacave"
+        ],
+        [
+          "/caveman",
+          "$jl-caveman"
+        ]
+      ]
+    },
+    {
+      "name": "jl-megacave",
+      "kind": "synced",
+      "role": "dependency",
+      "repo": "https://github.com/JuliusBrussee/caveman.git",
+      "ref": "HEAD",
+      "source_name": "megacave",
+      "source_path": "skills/megacave",
+      "include_paths": [
+        "SKILL.md"
+      ],
+      "destination": "synced/jl-megacave",
+      "commit": "d262ab3882952a59312ff3537cd86d894523c5ab",
+      "content_sha256": "88c23eafbdf29baaa8076898cdde3db03c11d4051ec663d064107152d761a138",
+      "license": "Apache-2.0",
+      "display_name": "JL Megacave",
+      "short_description": "使用文言文压缩对话表达，原样保留代码、命令、数字和错误信息",
+      "default_prompt": "使用 $jl-megacave 以文言文压缩本任务的回复，原样保留技术标识，直到我说正常模式。",
+      "allow_implicit_invocation": false,
+      "dependency_names": [
+        "caveman",
+        "ultracave",
+        "megacave"
+      ],
+      "replacements": [
+        [
+          "`/caveman-compress`",
+          "explicit requests to compress persisted text"
+        ],
+        [
+          "/ultracave",
+          "$jl-ultracave"
+        ],
+        [
+          "/megacave",
+          "$jl-megacave"
         ],
         [
           "/caveman",
@@ -333,18 +433,14 @@
       "source_name": "ponytail",
       "source_path": "skills/ponytail",
       "destination": "synced/jl-ponytail",
-      "commit": "e3ba2aa6f1e6f0bc4d69eb09c9f0d0a93af56156",
-      "content_sha256": "61c82f5eb38ace04daec4e4e1200c2e44686319446f87221a100c4decabfb273",
+      "commit": "742e0abae1501e12d1254a81d05f16bba10d08c1",
+      "content_sha256": "830eb5567efb77007bb08754f043d7ed0a7b8bb57bfe2f6f4129ecbafea204d4",
       "license": "MIT",
       "display_name": "JL Ponytail",
       "short_description": "默认选择能完整交付需求的最小生产实现",
       "default_prompt": "使用 $jl-ponytail 选择能完整满足需求的最小实现，先理解真实调用链，再减少代码。",
       "allow_implicit_invocation": true,
       "replacements": [
-        [
-          "argument-hint: \"[lite|full|ultra]\"\n",
-          ""
-        ],
         [
           "/ponytail",
           "$jl-ponytail"
