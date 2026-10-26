@@ -43,6 +43,18 @@ def read_openai_yaml(path):
 
 
 class FrontmatterTests(unittest.TestCase):
+    def test_configured_brainstorming_handoff_uses_registered_jl_name(self):
+        manifest = sync.load_manifest()
+        entries = sync.synced_entries(manifest)
+        entry = next(item for item in entries if item["name"] == "jl-brainstorming")
+        self.assertEqual(
+            sync.transform_text(
+                "Invoke the superpowers:writing-plans skill.", entry,
+                [item["source_name"] for item in entries],
+            ),
+            "Invoke the jl-writing-plans skill.",
+        )
+
     def test_unsupported_fields_are_removed_regardless_of_value_or_policy(self):
         fields = [
             'argument-hint: "[lite|full|ultra]"\n',
