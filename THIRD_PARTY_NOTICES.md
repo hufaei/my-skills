@@ -15,6 +15,7 @@ licenses remain with their respective owners.
 | [JuliusBrussee/caveman](https://github.com/JuliusBrussee/caveman) | Copyright © 2026 Julius Brussee | [Apache-2.0](licenses/caveman-Apache-2.0.txt), [NOTICE](licenses/caveman-NOTICE.txt), [retained MIT notice](licenses/caveman-MIT.txt) |
 | [DietrichGebert/ponytail](https://github.com/DietrichGebert/ponytail) | Copyright © 2026 DietrichGebert | [`licenses/ponytail-MIT.txt`](licenses/ponytail-MIT.txt) |
 | [ayghri/i-have-adhd](https://github.com/ayghri/i-have-adhd) | Copyright © 2026 Ayoub Ghriss | [`licenses/i-have-adhd-MIT.txt`](licenses/i-have-adhd-MIT.txt) |
+| [tt-a1i/archify](https://github.com/tt-a1i/archify) | Copyright © 2026 tt-a1i (Archify), Copyright © 2025 Cocoon AI | [Apache-2.0](synced/jl-archify/LICENSE), [NOTICE](synced/jl-archify/NOTICE), [retained MIT notice](synced/jl-archify/LICENSE-MIT), [third-party notices](synced/jl-archify/THIRD_PARTY_NOTICES.md) |
 | [mattpocock/skills](https://github.com/mattpocock/skills) | Copyright © 2026 Matt Pocock | [`licenses/mattpocock-skills-MIT.txt`](licenses/mattpocock-skills-MIT.txt) |
 
 The Caveman, Ultracave, and Megacave skill copies use upstream's Apache-2.0

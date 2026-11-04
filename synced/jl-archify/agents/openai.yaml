@@ -1,0 +1,6 @@
+interface:
+  display_name: "JL Archify"
+  short_description: "将代码库、流程和技术说明生成可交互的独立 HTML"
+  default_prompt: "使用 $jl-archify 把以下主题做成交互式 HTML 图：<主题或代码库>"
+policy:
+  allow_implicit_invocation: false

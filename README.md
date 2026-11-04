@@ -5,14 +5,14 @@
 <h1 align="center">my-skills</h1>
 
 <p align="center">
-  JL 的个人 Codex Skill 仓库：9 个自建技能与 35 个上游同步技能，统一 <code>jl-*</code> 命名。<br>
+  JL 的个人 Codex Skill 仓库：9 个自建技能与 36 个上游同步技能，统一 <code>jl-*</code> 命名。<br>
   装进 Codex 全局目录，或作为 DeepSeek Harness 插件包安装。
 </p>
 
 <p align="center">
-  <img alt="技能总数" src="https://img.shields.io/badge/%E6%8A%80%E8%83%BD-44-0f2f33?style=flat-square">
+  <img alt="技能总数" src="https://img.shields.io/badge/%E6%8A%80%E8%83%BD-45-0f2f33?style=flat-square">
   <img alt="自建" src="https://img.shields.io/badge/%E8%87%AA%E5%BB%BA-9-2f8f7a?style=flat-square">
-  <img alt="上游同步" src="https://img.shields.io/badge/%E4%B8%8A%E6%B8%B8%E5%90%8C%E6%AD%A5-35-b8791a?style=flat-square">
+  <img alt="上游同步" src="https://img.shields.io/badge/%E4%B8%8A%E6%B8%B8%E5%90%8C%E6%AD%A5-36-b8791a?style=flat-square">
   <img alt="Codex" src="https://img.shields.io/badge/Codex-skills-3d3d3d?style=flat-square">
   <img alt="DeepSeek Harness" src="https://img.shields.io/badge/DeepSeek%20Harness-bundle-3d3d3d?style=flat-square">
 </p>
@@ -184,12 +184,13 @@ Emil Kowalski 设计工程组的 13 个同步 Skill 也允许自动判断：`jl-
 | `jl-pr-steward` | 把当前分支交给新任务，并按用户指令处理 GitHub PR Review |
 | `jl-wait-what` | 上一条回复没有讲明白时，用中文补足上下文并重新解释 |
 
-### 上游同步技能（35）
+### 上游同步技能（36）
 
 这些目录是完整上游 Skill 的生成副本。同步过程只执行清单声明的机械转换：添加 `jl-` 前缀、按每个 Skill 声明的依赖改写交叉引用，并根据自动调用策略生成 Codex UI 元数据和兼容的 Skill 前置配置。
 
 | 本地 Skill | 上游 | 角色 |
 | --- | --- | --- |
+| `jl-archify` | [Archify](https://github.com/tt-a1i/archify) | 生成可交互的独立 HTML 图与单页说明 |
 | `jl-brainstorming` | Superpowers `brainstorming` | 独立深度设计流程 |
 | `jl-writing-plans` | Superpowers `writing-plans` | 独立详细计划流程 |
 | `jl-executing-plans` | Superpowers `executing-plans` | 独立按计划执行 |
@@ -231,6 +232,12 @@ Emil Kowalski 设计工程组的 13 个同步 Skill 也允许自动判断：`jl-
 Orchestra 在聊天中完成轻量设计和 Plan，不强制调用会写入设计/计划文件并设置额外确认门禁的完整 Superpowers 流程。需要深度设计或可持久化详细计划时，仍可单独调用 `jl-brainstorming`、`jl-writing-plans` 等同步 Skill。
 
 当前上游 `jl-brainstorming` 会先讨论方案；小改动也写短设计文档，批准后交给 `jl-writing-plans`。后者以接口、准确取值和测试断言表达实施要求，普通函数体留给实施者编写；计划仍需审阅后再执行。这两项适合明确选择设计与计划流程时使用。
+
+### 交互图与单页说明
+
+在 Codex 中显式调用 `$jl-archify`，例如「把这个仓库的安装流程画成交互图」。
+渲染器随技能安装，运行需要 Node.js 18 或更高版本。原生图的完整验收需要
+Archify 支持的 Chromium 浏览器。生成的 HTML 可以直接在浏览器打开。
 
 ## 常用用法
 
