@@ -21,6 +21,18 @@ Skill 完整副本；克隆仓库并运行安装脚本后，即可在 Codex 中�
 
 ## 安装
 
+### 作为 DeepSeek Harness 插件安装
+
+本仓库同时是一个 DSH 插件包：仓库根就是包根，`package.json` 的
+`dsh.bundle.patch` 指向 `cordis.patch.yml`。安装后 `skills/` 与 `synced/`
+里的 44 个 Skill 会作为 Harness 技能注册，模型可按需调用。
+
+```powershell
+dsh plugin --profile desktop add github:hufaei/my-skills
+```
+
+识别依据、更新与卸载方式、配置项见 [`docs/dsh-plugin.md`](docs/dsh-plugin.md)。
+
 ### 安装方式与目录映射
 
 仓库是唯一编辑源，Codex 的全局 Skill 目录是由安装脚本生成的本机副本：

@@ -1,0 +1,86 @@
+{
+  "format": 1,
+  "title": {
+    "en": "My Skills",
+    "zh": "我的技能库"
+  },
+  "description": {
+    "en": "Personal skill corpus published as a DeepSeek Harness bundle.",
+    "zh": "把个人技能库发布为 DeepSeek Harness 插件包。"
+  },
+  "metadata": {
+    "categories": {
+      "skills": {
+        "title": {
+          "en": "Skills",
+          "zh": "技能"
+        }
+      }
+    },
+    "labels": {
+      "first-party": {
+        "title": {
+          "en": "First-party",
+          "zh": "自有"
+        }
+      },
+      "synced-upstream": {
+        "title": {
+          "en": "Synced upstream",
+          "zh": "上游同步"
+        }
+      }
+    },
+    "sortKeys": {
+      "skills": {
+        "title": {
+          "en": "Skill count",
+          "zh": "技能数量"
+        },
+        "order": "desc"
+      }
+    }
+  },
+  "plugins": [
+    {
+      "name": "dsh-my-skills",
+      "title": {
+        "en": "My Skills",
+        "zh": "我的技能库"
+      },
+      "description": {
+        "en": "DeepSeek Harness bundle that publishes this repository's SKILL.md catalog as runtime skills.",
+        "zh": "把本仓库的 SKILL.md 技能目录发布为 DeepSeek Harness 技能，模型可按需调用。"
+      },
+      "icon": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCIgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiByb2xlPSJpbWciIGFyaWEtbGFiZWw9Ik15IFNraWxscyI+CiAgPHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiByeD0iMTQiIGZpbGw9IiMwZjJmMzMiLz4KICA8ZyBzdHJva2U9IiM1ZWM4YjAiIHN0cm9rZS13aWR0aD0iMi43NSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBmaWxsPSJub25lIj4KICAgIDxwYXRoIGQ9Ik0xNSAyMWgyNiIvPgogICAgPHBhdGggZD0iTTE1IDMxaDM0Ii8+CiAgICA8cGF0aCBkPSJNMTUgNDFoMjAiLz4KICA8L2c+CiAgPGNpcmNsZSBjeD0iNDUiIGN5PSI0MSIgcj0iNS41IiBmaWxsPSIjZjJiNTQ0Ii8+CiAgPGNpcmNsZSBjeD0iNDUiIGN5PSI0MSIgcj0iOS41IiBmaWxsPSJub25lIiBzdHJva2U9IiNmMmI1NDQiIHN0cm9rZS13aWR0aD0iMS41IiBvcGFjaXR5PSIwLjQ1Ii8+Cjwvc3ZnPgo=",
+      "author": "hufaei",
+      "homepage": "https://github.com/hufaei/my-skills#readme",
+      "repository": {
+        "url": "https://github.com/hufaei/my-skills"
+      },
+      "metadata": {
+        "category": "skills",
+        "keywords": [
+          "skills",
+          "prompt",
+          "workflow",
+          "中文"
+        ],
+        "labels": [
+          "first-party"
+        ]
+      },
+      "versions": [
+        {
+          "version": "1.0.0",
+          "publishTimestamp": 1792983134,
+          "source": {
+            "type": "git",
+            "url": "https://github.com/hufaei/my-skills",
+            "commit": "797a5a179f1644da0fa463bfec297b957970e29d"
+          }
+        }
+      ]
+    }
+  ]
+}

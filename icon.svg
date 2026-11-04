@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="My Skills">
+  <rect width="64" height="64" rx="14" fill="#0f2f33"/>
+  <g stroke="#5ec8b0" stroke-width="2.75" stroke-linecap="round" fill="none">
+    <path d="M15 21h26"/>
+    <path d="M15 31h34"/>
+    <path d="M15 41h20"/>
+  </g>
+  <circle cx="45" cy="41" r="5.5" fill="#f2b544"/>
+  <circle cx="45" cy="41" r="9.5" fill="none" stroke="#f2b544" stroke-width="1.5" opacity="0.45"/>
+</svg>

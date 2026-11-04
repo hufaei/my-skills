@@ -1,0 +1,54 @@
+{
+  "name": "dsh-my-skills",
+  "version": "1.0.0",
+  "description": "DeepSeek Harness bundle that publishes this repository's SKILL.md catalog as runtime skills.",
+  "type": "module",
+  "private": true,
+  "exports": {
+    ".": "./index.js",
+    "./locale/*.json": "./locale/*.json",
+    "./icon": "./icon.svg",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "index.js",
+    "cordis.patch.yml",
+    "locale/*.json",
+    "icon.svg",
+    "skills",
+    "synced",
+    "docs/dsh-plugin.md",
+    "README.md",
+    "THIRD_PARTY_NOTICES.md"
+  ],
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "deepseek-harness",
+    "skills",
+    "agent",
+    "bundle"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hufaei/my-skills.git"
+  },
+  "homepage": "https://github.com/hufaei/my-skills#readme",
+  "bugs": {
+    "url": "https://github.com/hufaei/my-skills/issues"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "install": {
+      "preferred": "tarball",
+      "tarball": "https://codeload.github.com/hufaei/my-skills/tar.gz/refs/heads/main",
+      "zip": "https://codeload.github.com/hufaei/my-skills/zip/refs/heads/main",
+      "git": "https://github.com/hufaei/my-skills.git"
+    }
+  }
+}

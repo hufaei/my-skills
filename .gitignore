@@ -1,0 +1,10 @@
+# Local installs and generated state
+node_modules/
+.pnpm-store/
+*.tgz
+
+# Editor and OS noise
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
