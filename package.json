@@ -8,6 +8,7 @@
     ".": "./index.js",
     "./locale/*.json": "./locale/*.json",
     "./icon": "./icon.svg",
+    "./cordis.patch.yml": "./cordis.patch.yml",
     "./package.json": "./package.json"
   },
   "files": [
@@ -19,7 +20,10 @@
     "synced",
     "docs/dsh-plugin.md",
     "README.md",
-    "THIRD_PARTY_NOTICES.md"
+    "THIRD_PARTY_NOTICES.md",
+    "licenses",
+    "sources.yaml",
+    "market-index.json"
   ],
   "keywords": [
     "dsh",
@@ -43,12 +47,6 @@
   "dsh": {
     "bundle": {
       "patch": "./cordis.patch.yml"
-    },
-    "install": {
-      "preferred": "tarball",
-      "tarball": "https://codeload.github.com/hufaei/my-skills/tar.gz/refs/heads/main",
-      "zip": "https://codeload.github.com/hufaei/my-skills/zip/refs/heads/main",
-      "git": "https://github.com/hufaei/my-skills.git"
     }
   }
 }
