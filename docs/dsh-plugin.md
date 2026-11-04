@@ -56,8 +56,11 @@ DSH 判定"这是一个插件包"只看 `package.json` 里有没有 `dsh.bundle`
 
 - `plugin_manager` 的 `list_bundles` 应出现 `dsh-my-skills`，`list_plugins`
   中出现 `my-skills` 行且 `enabled` 为真。
-- 会话技能目录里应出现 44 个 `jl-*` 技能（9 个 `skills/`、35 个 `synced/`）。
+- 会话技能目录里应出现 45 个 `jl-*` 技能（9 个 `skills/`、36 个 `synced/`）。
 - 插件面板里该行的标题是 `我的技能库` / `My Skills`，图标为本仓库 `icon.svg`。
+
+`jl-archify` 随包提供渲染脚本，按 Harness 的前置字段规则允许模型和用户调用。
+运行渲染脚本需要 Node.js 18 或更高版本。
 
 ## 更新
 

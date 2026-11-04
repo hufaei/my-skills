@@ -874,6 +874,30 @@
       "allow_implicit_invocation": true,
       "dependency_names": [],
       "replacements": []
+    },
+    {
+      "name": "jl-archify",
+      "kind": "synced",
+      "role": "primary",
+      "repo": "https://github.com/tt-a1i/archify.git",
+      "ref": "HEAD",
+      "source_name": "archify",
+      "source_path": "archify",
+      "destination": "synced/jl-archify",
+      "commit": "a4065941f12be7967436261d9934784e381d423c",
+      "content_sha256": "528653c709da8e362d270b9dc2b916aa49c55a82570641b0a017eb2e3b9b8ca8",
+      "license": "Apache-2.0",
+      "display_name": "JL Archify",
+      "short_description": "将代码库、流程和技术说明生成可交互的独立 HTML",
+      "default_prompt": "使用 $jl-archify 把以下主题做成交互式 HTML 图：<主题或代码库>",
+      "allow_implicit_invocation": false,
+      "dependency_names": [],
+      "replacements": [
+        [
+          "# Archify\n",
+          "# Archify\n\n> JL packaging note: my-skills changed this file to register the skill as `jl-archify`.\n"
+        ]
+      ]
     }
   ]
 }
