@@ -330,6 +330,7 @@ python3 scripts/sync_skills.py apply jl-brainstorming
 - [DietrichGebert/ponytail](https://github.com/DietrichGebert/ponytail)
 - [ayghri/i-have-adhd](https://github.com/ayghri/i-have-adhd)
 - [mattpocock/skills](https://github.com/mattpocock/skills)
+- [tt-a1i/archify](https://github.com/tt-a1i/archify)
 
 许可证和归属说明见 [`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md)。
 
