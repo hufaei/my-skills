@@ -1,0 +1,16 @@
+# dsh-my-skills bundle patch
+#
+# One Host row publishes this repository's skill corpus. `index.js` reads the
+# row config: each listed root is scanned for `*/SKILL.md`, and every skill is
+# registered on the `skills` service for this profile.
+#
+# Set `includeSynced: false` instead of editing `roots` to publish only the
+# first-party `skills/` tree.
+
+- insert:
+    - id: my-skills
+      name: dsh-my-skills
+      config:
+        roots:
+          - skills
+          - synced

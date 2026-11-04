@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "My Skills",
+    "description": "Publishes this repository's SKILL.md corpus as DeepSeek Harness skills the model can invoke on demand."
+  }
+}
