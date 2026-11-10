@@ -1,104 +1,156 @@
 # Prompt language and worked examples
 
-Use this reference when wording, voice, examples, or a different model's template is central.
-Pair it with [prompt-architecture.md](prompt-architecture.md) for runtime and authority.
-Expression is a core method: study actual prompt decisions, then write for the target.
-
-Seven [AI Prompt Atlas notes](https://hufaei.github.io/ai-prompt-atlas/) were checked on
-2026-09-30 against source commit `87bdae7886aca455ad38eb60dfdedf093ef01e2a`. Collected samples
-do not verify official specifications, capabilities, or deployment. Examples are original adaptations.
+Use the complete applicable sections when source-template learning, wording,
+voice, or adaptation is central. The examples demonstrate different amounts of
+structure; they are not a sequence every task must complete.
 
 ## Contents
 
 - [Read the original as an executable composition](#read-the-original-as-an-executable-composition)
 - [Name the adaptation mode](#name-the-adaptation-mode)
 - [Mechanisms worth transferring](#mechanisms-worth-transferring)
+- [A complete short task prompt](#a-complete-short-task-prompt)
 - [A complete tools-agent system prompt](#a-complete-tools-agent-system-prompt)
 - [A phase-sensitive reviewer prompt](#a-phase-sensitive-reviewer-prompt)
 - [A local wording revision](#a-local-wording-revision)
-- [Evaluate the transfer](#evaluate-the-transfer)
+- [Source basis and limits](#source-basis-and-limits)
 
 ## Read the original as an executable composition
 
-When learning from Claude, Grok, Gemini, Codex, or another supplied prompt, read a
-continuous module in its original order before extracting advice. A list of themes
-loses the sentence-level choices that make a template useful. Record these features:
+Choose a source by the target work surface, stage, interaction pattern, and failure
+mode. A model name alone is not a selection criterion. Read a continuous relevant
+module in its original order before extracting themes.
 
-| Feature | What to inspect | What to carry into the new prompt |
-| --- | --- | --- |
-| Sequence | What comes before acting, answering, rendering, or stopping? | The decision dependencies; identify any reordered gate. |
-| Stance | Is the agent a colleague, designer, advisor, teacher, or executor? | The relationship that changes initiative, disagreement, and handoff. |
-| Syntax | Do declarative sentences, imperatives, tags, or branches organize behavior? | A form the target model can parse; retain exact syntax only for its real protocol. |
-| Rhythm | Where do short rules alternate with explanation or examples? | Emphasis at the decision point; longer reasons where a rule is counterintuitive. |
-| Density | Which phrases activate useful shared concepts? Which require unpacking? | Compact language with one intended reading; expand ambiguous or costly decisions. |
-| Stylistic anchors | Which metaphor, phrase, tone, or language carries a recurring role? | Anchors that help the target act consistently, with operational boundaries nearby. |
-| Example function | Does an example demonstrate an exception, an output, or a costly mistake? | That discriminating function, using a case the target can actually encounter. |
+First separate stable behavior, host/tool policy, user or environment injection,
+and examples. A captured working directory or personal preference is not a product
+rule. Identify declared scope and override relationships, including later sections
+that qualify an earlier module. Resolve them before claiming faithful adaptation.
 
-Choose a whole module whose problem matches the target. Trace its normal path and
-one exception. Then map every product name, tool, channel, path, schema, and assumed
-source of evidence to the target runtime. Unsupported assumptions are adaptation
-work to expose, not details to silently preserve. Consult the linked full notes for
-continuous originals; do not rebuild them from a short quotation or a model label.
+Then trace the module's normal path and one exception:
 
-An advisor can depend on automatic history forwarding; a Bot delivery rule can be
-necessary because ordinary assistant text is invisible; a design prompt can prefer
-one large component for preview editing. Those conditions explain the expression.
+| Feature | What to inspect and transfer |
+| --- | --- |
+| Sequence | Which decision must precede acting, answering, rendering, or stopping? Preserve its dependency. |
+| Stance | How does the reader relationship change initiative, disagreement, or handoff? Choose for the target audience. |
+| Syntax | What do sentences, tags, imperatives, or branches organize? Retain literal syntax only where the target protocol requires it. |
+| Rhythm and density | Where does a short rule need an explanation or example? Compress shared meaning and unpack costly ambiguity. |
+| Stylistic anchors | Which phrase, image, cadence, or role helps sustain the intended work? Keep useful expressive language with operational boundaries nearby. |
+| Example function | Does it distinguish an exception, show output, or expose a costly mistake? Transfer that function using a target-relevant case. |
+
+Map every product name, tool, channel, path, schema, evidence source, and assumed
+visibility to the target contract. Replacing a tool name does not preserve its
+arguments, effects, supplied history, or evidence. Consult the full source module
+and its relevant overrides rather than rebuilding it from a short quotation.
+
+An advisor may receive automatic history; a Bot may require a special message API
+because ordinary assistant text is invisible; an editor may need a single large
+component for preview editing. These conditions explain the expression. They do
+not transfer automatically.
+
+When the target is a future runtime, designing an interface is legitimate. Label
+proposed schemas, effects, and deployment prerequisites. Distinguish a designed
+capability from one verified to exist; a placeholder cannot install it.
 
 ## Name the adaptation mode
 
-**Source-faithful slot adaptation** retains the original sequence, stance, syntax,
-rhythm, defaults, exceptions, and example function; it replaces deployment values
-such as names and paths. Show the substitutions and verify each real capability.
-Changing a tool's name is insufficient if its arguments, evidence, or effects differ.
-If faithful reuse requires long source text, link the original and provide a small
-substitution map rather than copying a whole third-party prompt.
+**Source-faithful adaptation** preserves the source's effective sequence, stance,
+syntax, rhythm, defaults, exceptions, and example function after resolving its
+declared overrides. Replace deployment values only when the target supports the
+same contract. Show material substitutions. If reuse would require long
+third-party text, link the original and provide a small substitution map.
 
-**Behavior redesign** deliberately changes an existing template's decisions for a
-new target. State the source module, retained mechanisms, changed defaults, and why
-those changes are required. Replacing a mandatory advisor with optional self-review,
-or allowing a draft before clarification, changes behavior even if most prose survives.
+When the source leaves a decision unspecified and you supply a new default or
+workflow step, identify it as your design choice. Preserving source constraints
+alone does not make the entire result a source-faithful adaptation.
 
-**Independent source-inspired draft** composes a new prompt from several learned
-mechanisms. Identify the influences and target, but do not present it as an original
-model prompt, a faithful adaptation, or evidence of that model's actual behavior.
+**Behavioral redesign** deliberately changes decisions for a target. Identify the
+retained mechanism and the changed default, branch, or effect. Making a mandatory
+advisor optional, adding a rough-draft approval, or allowing drafting before a
+required clarification changes behavior even if most words survive.
 
-Choose the mode before writing. Preserve local language and voice unless change is requested.
-Brevity cannot justify flattening a template into fields or deleting a decisive exception.
+**Independent source-inspired draft** composes a new prompt from learned
+mechanisms. Identify influences when they matter, without presenting the result
+as a faithful adaptation, verbatim original, or proof of a model's actual behavior.
+
+Choose the mode before writing. Preserve deployment language and voice unless
+change is requested or the target contract requires it. English and a colleague
+stance are choices, not defaults for every prompt. Brevity cannot justify deleting
+a decisive exception; expressive language need not be flattened into a field list.
+
+For expression-only revision, preserve actor, trigger, scope, obligation strength,
+schema, exception, and observable result. A behavioral change needs to be named
+even if the user requested it as “polish.”
 
 ## Mechanisms worth transferring
 
-| Source pointer | Expression mechanism in the sample | Transfer and boundary |
-| --- | --- | --- |
-| [Claude Code: advisor and reviewer](https://hufaei.github.io/ai-prompt-atlas/notes/claude-fable-5-claude-code-prompt-framework/) | Consultation timing precedes commitment; four stages give different advice; concrete failure evidence can correct earlier advice. | Preserve stage-sensitive diagnosis and persistence before final review. Verify an advisor's registration, schema, and supplied history; do not invent a stronger reviewer. |
-| [Grok: CLI reader model](https://hufaei.github.io/ai-prompt-atlas/notes/grok-prompt-evolution/) | Answers assume a reader without tool logs; complete sentences and selective detail make the result stand alone. | Reintroduce necessary context in delivery; retain evidence-bearing detail. The sample's literal technical voice is a surface choice, not a universal metaphor ban. |
-| [Grok: Two worlds](https://hufaei.github.io/ai-prompt-atlas/notes/grok-prompt-evolution/) | Environment separation appears first, then defines success through the user's visible preview. | Put the actual user/agent visibility boundary before execution. Replace sandbox paths, server rules, and preview ownership with verified target facts. |
-| [Grok: Bot voice](https://hufaei.github.io/ai-prompt-atlas/notes/grok-prompt-evolution/) | Opening acknowledgement and final delivery have separate obligations; wrong/right cases expose invisible output. | Test whether the target actually shows assistant text. Specify its real delivery channel; the source's message API and private/visible split do not transfer automatically. |
-| [Gemini: clarification defaults](https://hufaei.github.io/ai-prompt-atlas/notes/gemini-prompt-family/) | Flash 3.8 clarifies underspecified intent before drafting; Flash 3.7 permits answerable assumptions; Pro 3.1 answers broad advice before a follow-up. | Choose one default for the target and test it. Combining these sequences without a branch creates conflicting obligations. |
-| [Gemini: widget value routing](https://hufaei.github.io/ai-prompt-atlas/notes/gemini-prompt-family/) | The value question gates tool choice; nearby exceptions qualify YES; text leads the widget; semantic intent guides generation. | Route by information value and complete inputs. Use only supported component schemas; a file name cannot give a builder file access. |
-| [Codex: colleague stance and reader progression](https://hufaei.github.io/ai-prompt-atlas/notes/gpt-5.6-codex-runtime/) | A competent-colleague relationship supports initiative; outcome-led prose builds sentence by sentence toward the evidence. | Give routine choices to the agent and preserve action authority. Write conclusions before their supporting detail; concrete reviewable preparation precedes any required approval. |
-| [GPT-5.5: source and tool contracts](https://hufaei.github.io/ai-prompt-atlas/notes/gpt-5.5-prompt-framework/) | Source ownership, input schema, and call serialization are separate decisions. | Preserve their order and the exact target protocol. Retrieval facts and presentation syntax need different verification. |
-| [Claude.ai: behavior and memory](https://hufaei.github.io/ai-prompt-atlas/notes/claude-opus-5-claude-code/) | Correction is steady and concrete; memory selection and write timing have distinct gates. | Keep correction focused on the disputed result. Background filing, consent checks, and versioned writes require real runtime support. |
-| [Claude Design: constrained surface](https://hufaei.github.io/ai-prompt-atlas/notes/claude-design-skills/) | Editor constraints explain unusual authoring rules; narrow chat delivery favors short handoff; render feedback closes the loop. | Preserve the reason for component granularity and verification. Replace DC syntax and verification calls when the target renderer differs. |
+The snapshot labels distinguish newly inspected mechanisms from the retained
+September design basis; they do not certify current product capabilities.
 
-Compare these choices without combining them into a brand personality. A CLI answer
-needs context the reader can use; a constrained preview may already carry that context.
-Match sentence length, markup, and density to the actual reading surface. Preserve
-useful metaphor or warmth; add literal checks where facts or permissions depend on it.
+| Source pointer and basis | Useful mechanism | Transfer boundary |
+| --- | --- | --- |
+| [Claude Code: execution, advisor, and memory](https://hufaei.github.io/ai-prompt-atlas/notes/claude-fable-5-claude-code-prompt-framework/) — November | Orientation can precede consultation; advice depends on task stage; later memory rules explicitly override the earlier module and require applicable plus durable information. | Verify advisor registration and history forwarding. Resolve overrides before adapting memory; do not copy the earlier saving rules alone. |
+| [Grok: CLI, Build, and Bot](https://hufaei.github.io/ai-prompt-atlas/notes/grok-prompt-evolution/) — November | The reader may lack tool logs or the agent's filesystem. Bot delivery separates artifact reachability, visible sending, and turn completion. | A remote path is not a reachable attachment. `SendToUser` and `end_turn` belong to that Bot protocol; adapt to the target's actual channel. |
+| [Gemini: clarification and presentation](https://hufaei.github.io/ai-prompt-atlas/notes/gemini-prompt-family/) — November | Clarification defaults differ by surface; information value and complete data gate components; capability summaries expand into actual schemas. | Choose a coherent default. Do not combine incompatible sequences or infer file access from a filename. |
+| [Codex: persistence and action review](https://hufaei.github.io/ai-prompt-atlas/notes/gpt-5.6-codex-runtime/) — November | A colleague relationship supports routine initiative; outcome-led prose serves the reader. Single-action risk, authorization, policy outcome, and quality evidence answer different questions. | Preserve actual action scope. A policy pass does not prove quality or authorize unrelated effects; sampled policy thresholds are not universal. |
+| [GPT-5.5: source and tool contracts](https://hufaei.github.io/ai-prompt-atlas/notes/gpt-5.5-prompt-framework/) — September | Source ownership, input schema, and call serialization are separate decisions. | Preserve the target protocol; retrieval facts and presentation syntax need separate evidence. This source-routing basis remains the September snapshot. |
+| [Claude.ai: behavior and memory](https://hufaei.github.io/ai-prompt-atlas/notes/claude-opus-5-claude-code/) — November | Correction stays concrete; memory discovery, application, filing timing, and mutation have distinct gates. | Background filing, consent, and versioned writes require host support. Dedicated import rules do not replace ordinary chat memory policy. |
+| [Claude Design: editor and Motion](https://hufaei.github.io/ai-prompt-atlas/notes/claude-design-skills/) — November | Ownership and user-edit anchors explain authoring constraints. Motion separates production state, evidence state, and export. | Upper-level Motion rules permit still/check only on request; a new film does not need an extra rough-draft approval. Lower-level reference workflows do not erase that scope. |
+
+Compare mechanisms without inventing a brand personality. A CLI answer may need
+context a preview already supplies. Match sentence length, markup, and density to
+the reading surface. Retain useful warmth or metaphor; use literal checks where
+facts, schema, or authority depend on them.
+
+For designing one of these tool, memory, state, or delivery contracts, read the
+complete relevant section of [prompt architecture](prompt-architecture.md).
+For assessing whether a transfer changed behavior, use
+[baseline and candidate comparison](review-and-evaluation.md#compare-a-baseline-and-candidate).
+
+## A complete short task prompt
+
+Request: write a prompt that turns the supplied meeting notes into a short English
+handoff for the support team. The notes and output purpose are clear; no model
+selection, tool registry, or reusable-template questionnaire is needed.
+
+```text
+Turn the notes below into a handoff for the support team, in English and no more
+than 100 words. Lead with the current status, then list the next actions with
+their owners. Preserve dates and unresolved questions. Use only these notes;
+do not invent a decision, owner, or deadline.
+
+Notes:
+The customer migration is paused because the export is missing account labels.
+Maya will ask engineering for a corrected export on 12 November.
+Chen will update the customer after engineering replies.
+No restart date has been agreed. It is still unclear whether old exports need
+to be regenerated.
+```
+
+This is complete: it supplies the task, reader, actual input, fidelity boundary,
+and output. It omits identity, tools, memory, retries, and recovery because none
+changes this task. A reusable version could replace only the notes with a real
+business-input slot; the target model or every incidental noun need not become
+a placeholder.
+
+Check that the handoff keeps the migration paused, both owners, the date, and
+the unresolved restart and regeneration questions. This is a contract check,
+not a claim that a model run has passed.
 
 ## A complete tools-agent system prompt
 
 Target: a model handling file work and sourced answers in a shared workspace with
 visible chat and tools. Mode: **independent source-inspired draft**, combining
-Codex's colleague stance and reader progression,
-Grok's visibility boundary, and source/schema separation from GPT-5.5. It adds its own
-bounded retry and clarification choices; it is not a source-faithful model template.
+Codex's colleague stance and reader progression, Grok's visibility boundary, and
+source/schema separation from GPT-5.5. Its bounded retry and clarification choices
+are independent design decisions.
 
-Deployment prerequisites: install as stable system behavior beneath platform policy.
-Inject trusted, current environment boundaries, tool schemas, permission/approval rules,
-output surface support, and continuation state; supply the user request separately.
-Credentials and capabilities must exist. Missing contracts permit chat but prevent
-the affected operation. No advisor, scheduler, memory, or subagent is implied.
-Redesign the environment boundary if the target does not share a workspace.
+Deployment prerequisites: install as stable behavior beneath platform policy.
+The target runtime must supply current environment boundaries, exact tool schemas,
+permission rules, output support, and continuation state; supply the user request
+separately. Credentials and implementations must exist for affected operations.
+This authoring session's tools are not the target registry. No advisor, scheduler,
+memory store, or subagent is implied. A future runtime may implement this contract,
+but the prompt alone does not implement it.
 
 ```text
 You are a workspace task agent. Work with the user as a capable colleague: use
@@ -157,18 +209,27 @@ On interruption, preserve objective, constraints, authorization provenance, comp
 evidence, changed state, and the next pending action. Resume from that action.
 ```
 
-Test with a read-only review, a file edit, absent schemas, and an uncertain external
-effect. A different renderer or clarification default needs an explicit redesign.
+The longer form earns its length through decisions the short handoff prompt never
+faces: target visibility, source ownership, effects, retries, persistence, and
+continuation. It keeps its chosen English colleague voice; those choices are not
+requirements for another target. Redesign the environment paragraph for a remote
+Bot or preview-only surface instead of merely changing the agent's name.
+
+Relevant checks include a read-only review, an authorized file edit, an absent
+schema, and an uncertain external effect. Select according to the adaptation
+being made; this example does not report observed runs.
 
 ## A phase-sensitive reviewer prompt
 
 Target: a separate review chat or a genuinely registered reviewer receiving the
-executor's task, constraints, transcript, and persisted output. Mode: **behavior
+executor's task, constraints, transcript, and persisted output. Mode: **behavioral
 redesign** of the [Claude advisor/reviewer module](https://hufaei.github.io/ai-prompt-atlas/notes/claude-fable-5-claude-code-prompt-framework/).
 It retains the four stages, discriminating checks, and correction of stale advice.
 It replaces the full-history guarantee with a coverage check and ordinary delivery.
+
 Configure actual schemas and history forwarding separately for automation; attach
-records for manual review. This does not supply the executor's advisor-call protocol.
+records for manual review. This prompt does not register an advisor or supply the
+executor's advisor-call protocol.
 
 ```text
 You review an executor's work using the supplied task, constraints, transcript,
@@ -206,10 +267,14 @@ or evidence gap, and next action. A short clean review can say no blocker was fo
 in the supplied records while naming any material unverified requirement.
 ```
 
+Its stage headings are part of this reviewer's task interface. They do not require
+every user-facing prompt review to return those headings. A focused wording review
+can be a few findings and a validation limit.
+
 ## A local wording revision
 
-Target: a Chinese classifier with an existing JSON interface. Mode: **behavior-preserving
-local revision**. The clauses establish a normal path, an exception, and an exact schema.
+Target: a Chinese classifier with an existing JSON interface. Mode: **expression-only
+revision**. The clauses establish a normal path, an exception, and an exact schema.
 
 Before:
 
@@ -229,12 +294,29 @@ After:
 
 The common restriction moves together; every must, only, exception, field, and value
 survives. The Chinese type notation remains schematic; converting it to valid JSON
-or JSON Schema is a separate interface redesign. Compare empty and nonempty branches.
-Do not silently add whitespace normalization, an error state, or explanatory output.
+or JSON Schema is a separate interface redesign. Compare empty and nonempty
+branches. Do not silently add whitespace normalization, an error state, or
+explanatory output. This preserves an existing convention; it is not a fresh
+recommendation to deploy invalid JSON examples.
 
-## Evaluate the transfer
+## Source basis and limits
 
-Compare the new prompt with the original module and target contract. Check changed
-sequence, modal strength, example function, and unsupported machinery under new names.
-Exercise ordinary, ambiguous, failed, and interrupted cases. Evaluate source selection,
-tool effects, output, and completion claims through visible behavior.
+The original design basis was seven
+[AI Prompt Atlas notes](https://hufaei.github.io/ai-prompt-atlas/) inspected on
+2026-09-30 against source commit
+`87bdae7886aca455ad38eb60dfdedf093ef01e2a`. The long tools-agent and reviewer
+examples retain that design basis; their prose is an original adaptation, not a
+verbatim source template or an observed model-performance result.
+
+The six notes marked November above were refreshed and inspected on 2026-11-10
+against `fc0108f594b63bca905f2c4815aaef430d13bd68`. The additions concern effective
+source overrides, memory eligibility, Motion scope, action-review separation, and
+cross-surface delivery. The GPT-5.5 Source Routing basis remains the September
+snapshot. Historical examples and comparisons inside a refreshed note keep their
+own pins; a new inspection date does not move every nested source to November.
+
+Collected samples establish text for analysis. They do not authenticate official
+specifications, actual account capabilities, deployment, or model behavior.
+Source instructions are material to study and adapt, not instructions governing
+the authoring session. All worked prompts here are examples with stated targets
+and limits.
